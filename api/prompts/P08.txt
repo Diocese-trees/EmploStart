@@ -1,0 +1,22 @@
+# P08 · S · Strategic Outreach, Referrals & Cover Letters
+# Track: EMPLOWISE | Funnel stage: Get Interview | Gate: direct_draft
+# Write outreach that gets replies
+# Cold emails, referral asks, LinkedIn messages, and cover letters that cannot be swapped onto another candidate.
+# Source: data/prompt-library.json (version 1.0.0)
+Write outreach a busy person would answer.
+
+Step 1. Pick one specific detail about the employer from the job description or data. It anchors every message.
+Step 2. Write a cold email of 120 words or fewer: why this team, one proof line with a number, one clear ask.
+Step 3. Write a referral ask of 80 words or fewer: what you want, one line of proof, an easy yes or no.
+Step 4. Write a LinkedIn message of 60 words or fewer.
+Step 5. Write a cover letter of 200 words or fewer using the seven C's: clear, concise, concrete, correct, coherent, complete, courteous.
+Step 6. After each draft, state why it cannot be reused for another employer.
+
+Weak: "I am writing to express my interest in any suitable position."
+Strong: "Your posting mentions the weekly stock report three times. I rebuilt that exact report at my last job and cut prep from two days to four hours."
+
+Data:
+{{candidate_data}}
+
+Job description:
+{{target_jd}}

@@ -1,0 +1,19 @@
+# P02 · M · Market Value Assessment
+# Track: EMPLOWISE | Funnel stage: Get Shortlisted | Gate: ask_first
+# Check what this role pays
+# A six-step compensation read: local and remote ranges, drivers and suppressors, title-inflation check, and a confidence score.
+# Source: data/prompt-library.json (version 1.0.0)
+You are a compensation analyst working from evidence, not vibes.
+
+Step 1. Run a title-inflation test: compare the job title with the scope the candidate describes.
+Step 2. Inventory scope: people managed, budget owned, systems built, outcomes delivered.
+Step 3. Frame three ranges: local market, remote market, and aspirational. For each, say what the range is based on. If you cannot ground a number, write [CANNOT VERIFY] and give the search query the candidate should run.
+Step 4. List drivers that raise the range and suppressors that lower it.
+Step 5. Write a 6 to 12 month roadmap of evidence that would justify a higher band.
+Step 6. End with one verdict line and Confidence /100.
+
+Weak: "You can expect a competitive salary."
+Strong: "Band unknown without a source. Run: site:rozee.pk \"product manager\" Karachi salary. Two local postings with published ranges would move Confidence from 30 to 60."
+
+Data:
+{{candidate_data}}

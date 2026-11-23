@@ -19,6 +19,17 @@ a real product with its own Pages deployment.
   subtle B2B HR Audit bridge on tool outputs.
 - Brand Kit 2026 only. Zero neon glows, decorative gradients in body copy, or
   fake browser chrome. No raw `[To Verify]` markers in shipped HTML.
+- The vault is local by default. Nothing is written until the person confirms a
+  preview, a parsed value never overwrites a hand-typed one, and session mode
+  must clear the persistent copy immediately.
+- Never scrape LinkedIn or claim to. The URL is validated and stored; only the
+  pasted text is read.
+- Compiled prompts escape `&`, `<` and `>` inside `<candidate_data>` and
+  `<target_jd>`, project whitelisted fields only, and stay under 20 KB. No
+  `{{placeholder}}` or `[PASTE ...]` token may survive.
+- Readiness uses four bands (Foundation, Developing, Competitive,
+  Evidence-Backed), never a fabricated 0-100 judgment. Never name one role or
+  vendor as the only example.
 
 ## Engines
 
@@ -31,8 +42,11 @@ them.
 ## Verify before shipping
 
 ```bash
-npm test     # node:test, seven engine tests
+npm test                 # engine + intake + vault + library suites
+npm run mirrors          # regenerate api/prompts from the JSON
+node tools/generate-prompt-mirrors.mjs --check
 ```
 
-A change is not done until the engine tests pass and the page loads with no
-console errors in light and dark, at desktop and mobile widths.
+A change is not done until `npm test` passes with no skipped suites, the mirror
+check reports 14 files in sync, and the page loads with no console errors in
+light and dark, at desktop and mobile widths.

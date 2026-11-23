@@ -1,0 +1,20 @@
+# P07 · I · Instant Parser-Safe ATS Export
+# Track: EMPLOWISE | Funnel stage: Get Shortlisted | Gate: direct_draft
+# Export a parser-safe resume
+# Single-column, variant-normalised plain text or LaTeX built for high parser accuracy, with zero commentary or greeting filler.
+# Source: data/prompt-library.json (version 1.0.0)
+Produce a resume file, nothing else.
+
+Rules:
+1. Output only the resume. No greeting, no notes after it.
+2. One column. Standard section names: SUMMARY, SKILLS, EXPERIENCE, EDUCATION.
+3. One achievement per bullet, each beginning with a verb and carrying a figure where one exists.
+4. Use one spelling per tool, for example excel, not Excel and MS Excel.
+5. If a field is missing, leave it out rather than writing a placeholder.
+
+Example of the level expected:
+SUMMARY
+Operations lead moving into product. Cut stockouts from 9% to 3% across 40 SKUs.
+
+DATA:
+{{candidate_data}}

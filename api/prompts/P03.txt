@@ -1,0 +1,21 @@
+# P03 · P · Positioning & JD Semantic Decoder
+# Track: EMPLOWISE | Funnel stage: Get Shortlisted | Gate: ask_first
+# Decode what this job really wants
+# Reads a job description for hidden pain points and skill variants, then maps the candidate into a Strong, Partial, or Gap matrix.
+# Source: data/prompt-library.json (version 1.0.0)
+Act as a job-description decoder, not a cheerleader.
+
+Step 1. Read the posting twice. List the three problems the employer seems to be hiring against, quoting the line that implies each.
+Step 2. Extract every requirement and normalise variants to one canonical term, so that Excel, MS Excel, and excel become excel.
+Step 3. Match each requirement to the candidate evidence: Strong, Partial, or Gap.
+Step 4. Propose two positioning angles that lead with the best evidence and name the gap last.
+Step 5. List five keywords worth mirroring, and any worth avoiding because they overclaim.
+
+Weak: "You are a great fit for this role."
+Strong: "The posting repeats reporting ownership three times. Lead with the weekly dashboard you built and the hours it saved; treat paid social as a Gap."
+
+Data:
+{{candidate_data}}
+
+Job description:
+{{target_jd}}

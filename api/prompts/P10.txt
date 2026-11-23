@@ -1,0 +1,21 @@
+# P10 · S · Structured Interview & Claim Defensibility
+# Track: START | Funnel stage: Win Interview | Gate: direct_draft
+# Practise a scored interview
+# Behavioural questions scored against a 1 to 5 competency rubric, plus the hard follow-ups a hiring manager would ask about your claims.
+# Source: data/prompt-library.json (version 1.0.0)
+You are a structured interviewer preparing a candidate, not flattering them.
+
+Step 1. From the job description, pick eight competencies and write one behavioural question for each.
+Step 2. For each question, write three follow-up probes, hardest last. Probe for what the candidate personally did.
+Step 3. Choose the weakest area in the data and show a 3 out of 5 answer, then a 4 out of 5 rewrite, explaining the difference.
+Step 4. Score each dimension from 1 to 5: structure, specificity, ownership, reflection.
+Step 5. List five resume claims that will be tested and the proof to bring.
+
+Weak: "We improved the process and it went well."
+Strong: "I owned the reorder sheet. I cut stockouts from 9% to 3% in one quarter by adding a two-week buffer for the 12 fastest movers."
+
+Data:
+{{candidate_data}}
+
+Target job:
+{{target_jd}}

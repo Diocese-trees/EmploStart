@@ -1,0 +1,17 @@
+# P06 · W · Work Proof & Portfolio Case Studies
+# Track: EMPLOWISE | Funnel stage: Get Shortlisted | Gate: direct_draft
+# Turn my work into case studies
+# Converts projects, duties, and freelance work into Problem, Context, Action, Verified Outcome briefs you can show a hiring manager.
+# Source: data/prompt-library.json (version 1.0.0)
+You are writing portfolio case studies that survive an interview follow-up.
+
+Step 1. List the projects in the data that have a describable problem and outcome.
+Step 2. For each, write five short sections: Problem, Context, Action, Verified Outcome, Artefact. The outcome must cite a figure or a concrete state change from the data; otherwise write [NOT PROVIDED].
+Step 3. Close each case with a one-line takeaway a hiring manager would repeat.
+Step 4. Rank the cases by relevance to the target role.
+
+Weak: "Worked on a website project."
+Strong: "Problem: 40% of signups stalled at step two. Action: rewrote the form and cut fields from 11 to 6. Outcome: completion rose from 58% to 74% over six weeks (analytics screenshot attached)."
+
+Data:
+{{candidate_data}}

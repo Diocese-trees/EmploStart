@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EmploStart — six free career tools | Emplowise</title>
-<meta name="description" content="Six free career tools for career pivoters and job seekers: pivot planner, reimagination lab, market and fair-wage readiness, ATS resume checker, interview prep, and profile builder. Runs locally by default.">
+<title>EmploStart — six career tools, 14 prompts, one private vault | Emplowise</title>
+<meta name="description" content="Six free career tools plus a 14-prompt EMPLOWISE x START employability library and one private candidate vault. Three intake lanes: a diagnostic, a LinkedIn paste, or a CV upload. Runs locally by default; AI is opt-in.">
 <meta name="emplostart-ai-endpoint" content="">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23081B3E'/%3E%3Ctext x='16' y='22' font-family='Montserrat,Arial' font-size='18' font-weight='800' fill='%235EEAD4' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/tokens.css">
@@ -27,9 +27,77 @@
 <main id="main">
   <section class="hero">
     <p class="kicker">Free career utility</p>
-    <h1>Six free career tools. No account. No cost.</h1>
-    <p class="lede">Plan a pivot, test a new direction, check fair-wage readiness, score a resume against a job description, practise an interview, and tighten your profile. Everything runs in your browser by default; AI is optional and only with your consent.</p>
+    <h1>Six career tools, 14 prompts, one private vault.</h1>
+    <p class="lede">Plan a pivot, test a new direction, check fair-wage readiness, score a resume against a job description, practise an interview, and tighten your profile. The 14-prompt library adds shortlisting, interview, offer and pivot prompts. Everything runs in your browser by default; AI is optional and only with your consent.</p>
     <p class="hero-note" id="mode-note">Non-AI mode: nothing you type leaves this page.</p>
+  </section>
+
+  <section class="intake" id="intake">
+    <div class="shell">
+      <p class="kicker">Start here</p>
+      <h2>Three lanes into one local vault.</h2>
+      <p class="lede">Answer a short diagnostic, paste a LinkedIn profile, or bring a CV. Everything is read in your browser, and nothing is saved until you approve the preview.</p>
+      <div class="intake-grid">
+        <form class="card lane" id="lane-test-form">
+          <h3>1 &middot; Diagnostic test</h3>
+          <p class="panel-hint">Twelve questions, about two to three minutes. You get four readiness bands, never a fake score out of 100.</p>
+          <div id="lane-test-questions" class="diagnostic-list"></div>
+          <div class="actions"><button class="btn btn--teal" type="submit">Save my bands</button></div>
+          <div id="lane-test-result" class="lane-result" aria-live="polite"></div>
+        </form>
+        <form class="card lane" id="lane-linkedin-form">
+          <h3>2 &middot; LinkedIn profile</h3>
+          <p class="panel-hint">We never open or scrape LinkedIn. Paste the About and Experience text you want used, and the gaps become questions.</p>
+          <label>Profile URL<input id="lane-linkedin-url" type="url" placeholder="https://linkedin.com/in/your-name" autocomplete="off"></label>
+          <label>Pasted profile text<textarea id="lane-linkedin-text" rows="4" placeholder="Paste About and Experience here"></textarea></label>
+          <div class="actions"><button class="btn btn--teal" type="submit">Preview and fill gaps</button></div>
+        </form>
+        <form class="card lane" id="lane-cv-form">
+          <h3>3 &middot; CV upload or PDF paste</h3>
+          <p class="panel-hint">.docx, .txt, or .md read locally. Pasted PDF text gets its broken line wraps and bullet glyphs repaired first.</p>
+          <label>CV file<input id="lane-cv-file" type="file" accept=".docx,.txt,.md,text/plain"></label>
+          <label>Or paste the text<textarea id="lane-cv-text" rows="5" placeholder="Paste the CV as plain text"></textarea></label>
+          <div class="actions">
+            <button class="btn btn--ghost" type="button" id="lane-cv-repair">Repair paste</button>
+            <button class="btn btn--teal" type="submit">Preview and fill gaps</button>
+          </div>
+        </form>
+      </div>
+      <div class="card preview" id="intake-preview" hidden>
+        <h3>Parse preview</h3>
+        <p class="panel-hint" id="preview-note"></p>
+        <div id="preview-table" class="preview-table"></div>
+        <div id="delta-questions" class="delta"></div>
+        <div class="actions">
+          <button class="btn btn--teal" type="button" id="preview-save">Save to vault</button>
+          <button class="btn btn--ghost" type="button" id="preview-cancel">Cancel</button>
+        </div>
+      </div>
+      <div class="card vault" aria-labelledby="vault-heading">
+        <div class="vault-head">
+          <h3 id="vault-heading">Your local vault</h3>
+          <p class="vault-completeness" id="vault-completeness">0% complete</p>
+        </div>
+        <div id="vault-bands" class="vault-bands"></div>
+        <div class="vault-controls">
+          <label>Storage<select id="vault-mode"><option value="persistent">This browser (persists)</option><option value="session">Shared or lab PC (wipes on close)</option></select></label>
+          <div class="actions">
+            <button type="button" class="btn btn--ghost btn--sm" id="vault-sample">Load sample</button>
+            <button type="button" class="btn btn--ghost btn--sm" id="vault-export">Export JSON</button>
+            <label class="btn btn--ghost btn--sm file-btn">Import JSON<input type="file" id="vault-import" accept="application/json,.json" hidden></label>
+            <button type="button" class="btn btn--ghost btn--sm" id="vault-wipe">Wipe local data</button>
+          </div>
+        </div>
+        <p class="panel-hint" id="vault-note" aria-live="polite">Nothing leaves this browser unless you turn on AI mode for one request.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="context-bar" id="context-bar" aria-label="Target context">
+    <label for="engine-context">Target context</label>
+    <select id="engine-context"></select>
+    <label class="sync-toggle"><input type="checkbox" id="engine-sync"> Sync edits back to Vault</label>
+    <span class="panel-hint" id="engine-bridge-note" aria-live="polite">Forms fill from your vault. Sync is off by default.</span>
   </section>
 
   <nav class="module-nav" aria-label="Career modules">
@@ -126,6 +194,41 @@
       <ul class="prompt-list" id="prompt-list"></ul>
     </div>
   </section>
+  <section class="library" id="library">
+    <div class="shell">
+      <p class="kicker">EMPLOWISE &times; START</p>
+      <h2>Fourteen letters. Fourteen prompts.</h2>
+      <p class="lede">One prompt per letter, in journey order: get shortlisted, get the interview, win it, land a fair offer, then pivot. The compiler fills what it can from your vault and asks about the rest.</p>
+      <div id="library-tracks" class="library-tracks"></div>
+      <div class="library-controls">
+        <input type="search" id="library-search" placeholder="Search prompts by task or keyword" aria-label="Search prompts">
+        <div id="library-stages" class="library-stages" role="group" aria-label="Filter by funnel stage"></div>
+      </div>
+      <ol id="library-list" class="library-list"></ol>
+      <div class="card library-workbench" id="library-workbench" hidden>
+        <h3 id="wb-title"></h3>
+        <p class="panel-hint" id="wb-sub"></p>
+        <p class="workbench-ready" id="wb-ready"></p>
+        <div id="wb-context"></div>
+        <div class="workbench-variants" role="group" aria-label="Template style">
+          <button type="button" class="chip is-active" id="wb-variant-reasoning" aria-pressed="true">Reasoning XML</button>
+          <button type="button" class="chip" id="wb-variant-standard" aria-pressed="false">Standard step-by-step</button>
+        </div>
+        <div id="wb-form" class="workbench-form"></div>
+        <p class="workbench-meter" id="wb-meter"></p>
+        <div class="workbench-actions">
+          <button class="btn btn--teal" type="button" id="wb-copy">Copy compiled prompt</button>
+          <button class="btn btn--ghost" type="button" id="wb-download">Download .txt</button>
+          <button class="btn btn--ghost" type="button" id="wb-precheck">Local pre-check</button>
+          <button class="btn btn--ghost" type="button" id="wb-sample">Load sample</button>
+          <button class="btn btn--ghost" type="button" id="wb-reset">Reset</button>
+          <button class="btn btn--ghost" type="button" id="wb-ai" hidden>Run in AI mode</button>
+        </div>
+        <pre class="workbench-output" id="wb-output" tabindex="0"></pre>
+        <p class="panel-hint" id="wb-note" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <section class="pledge" aria-labelledby="pledge-heading">
@@ -158,7 +261,14 @@
 <script src="js/engines/pivot.js" defer></script>
 <script src="js/engines/reimagine.js" defer></script>
 <script src="js/engines/market.js" defer></script>
+<script src="js/candidate-vault.js" defer></script>
+<script src="js/docx-extract.js" defer></script>
+<script src="js/intake-engine.js" defer></script>
+<script src="js/prompt-compiler.js" defer></script>
 <script src="js/ai.js" defer></script>
 <script src="js/app.js" defer></script>
+<script src="js/engine-bridge.js" defer></script>
+<script src="js/intake-ui.js" defer></script>
+<script src="js/prompt-library.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+# P01 · E · Evidence & Career Inventory
+# Track: EMPLOWISE | Funnel stage: Get Shortlisted | Gate: ask_first
+# Build my evidence inventory
+# Separates claimed skills from demonstrated outcomes, weights recent work, and lists the proof you still need.
+# Source: data/prompt-library.json (version 1.0.0)
+You are a hiring evidence analyst. Read the candidate data and job description below, then work in four passes: extract, classify, weight, summarise.
+
+Step 1. List every claim the candidate makes, exactly as written.
+Step 2. For each claim, find the evidence in the data. Mark it Strong if a number, tool, or referee backs it, Partial if the context is thin, Gap if nothing supports it.
+Step 3. Weight recent work: anything dated 2024 to 2026 outranks older work.
+Step 4. Write each demonstrated win as Action + Context + Method + Verified Result. If a figure is absent, write [NOT PROVIDED].
+
+Then ask up to five short questions only about the gaps that block shortlisting.
+
+Weak: "Managed social media and improved engagement."
+Strong: "Rebuilt the posting calendar for 3 brands, cut response time from 48h to 6h, tracked in a shared sheet."
+
+Data:
+{{candidate_data}}
+
+Target job:
+{{target_jd}}

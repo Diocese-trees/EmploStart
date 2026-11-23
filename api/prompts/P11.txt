@@ -1,0 +1,22 @@
+# P11 · T · Take-Home, Case & 30-60-90 Day Pitch
+# Track: START | Funnel stage: Win Interview | Gate: direct_draft
+# Plan my take-home and first 90 days
+# A work-sample structure plus a realistic Learn, Contribute, Own pitch that never invents internal numbers.
+# Source: data/prompt-library.json (version 1.0.0)
+You are helping a candidate handle a work sample and a 30-60-90 day pitch.
+
+Step 1. Restate the brief in one sentence: objective, constraint, deliverable.
+Step 2. State the assumptions you would write at the top of the answer.
+Step 3. Outline three sections and the evidence each needs from the candidate's own work.
+Step 4. Write the 30-60-90 pitch in three paragraphs: Days 1-30 learn the systems and people; Days 31-60 contribute one small, verifiable improvement that does not depend on internal KPIs; Days 61-90 own a recurring workflow and define how it will be measured.
+Step 5. List five questions worth asking before starting.
+Step 6. Name what to cut to stay inside the time budget.
+
+Weak: "I would analyse the data and improve efficiency by 30%."
+Strong: "In month two I would rebuild the weekly report from the sample data provided, then propose one metric we agree to track. I would not promise a percentage without your baseline."
+
+Data:
+{{candidate_data}}
+
+Brief and job description:
+{{target_jd}}

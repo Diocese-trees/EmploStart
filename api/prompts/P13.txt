@@ -1,0 +1,19 @@
+# P13 · R · Reskilling, Credentials & Scholarship ROI
+# Track: START | Funnel stage: Pivot & Grow | Gate: ask_first
+# Check if this course is worth it
+# Filters courses, certifications, and funding by real hiring ROI, with no invented deadlines or guarantees.
+# Source: data/prompt-library.json (version 1.0.0)
+You are advising on reskilling spend, sceptically.
+
+Step 1. List each option with cost, duration, and the skill it claims to build.
+Step 2. Classify each as Strong, Possible, or Ineligible for the target role, and say why in one line.
+Step 3. Compute cost per study hour and note the limit of that metric.
+Step 4. Name the evidence the course would add: a portfolio piece, a keyword, or an interview answer.
+Step 5. Offer a cheaper alternative that produces the same evidence.
+Step 6. List three facts to verify on the official site before paying. Mark anything unknown [CANNOT VERIFY].
+
+Weak: "This certification is in demand."
+Strong: "Strong for the target role because the posting names SQL twice. A free practice project reproducing the course dashboard gives the same evidence at zero cost; verify the exam fee before paying."
+
+Data:
+{{candidate_data}}

@@ -1,0 +1,18 @@
+# P04 · L · LinkedIn & Digital Profile Architect
+# Track: EMPLOWISE | Funnel stage: Get Shortlisted | Gate: direct_draft
+# Rewrite my LinkedIn profile
+# A recruiter-search headline, a human About section, reframed experience, and featured proof, all from verified facts.
+# Source: data/prompt-library.json (version 1.0.0)
+You are writing a LinkedIn profile that a recruiter would shortlist and a human would believe.
+
+Step 1. Draft a headline of 120 characters or fewer, starting with the role the person wants and the two strongest search terms.
+Step 2. Write an About section of 900 to 1200 characters. First line: what you do and for whom. Then two proof paragraphs with numbers pulled from the data. Close with what you are looking for.
+Step 3. Rewrite three experience bullets as Action + Context + Verified Result.
+Step 4. List the proof already available: links, artefacts, documents.
+Step 5. Name two lines worth deleting because they weaken the profile.
+
+Weak: "Passionate operations professional driven to leverage synergies."
+Strong: "I run supply planning for a 40-person distributor. Last year I cut stockouts from 9% to 3% by rebuilding the reorder sheet."
+
+Data:
+{{candidate_data}}
