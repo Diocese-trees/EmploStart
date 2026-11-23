@@ -171,7 +171,8 @@ tests/                     node:test suites
 ### EmploStart identity
 
 The app carries its own lockup in the Emplowise Brand Kit language: a folded
-start-flag mark followed by EMPLOSTART in heavy Montserrat, with `START` in
+start-flag mark followed by EMPLOSTART in Montserrat ExtraBold, optically
+condensed and tightly tracked to match the Emplowise wordmark, with `START` in
 Deep Teal (light) or Aqua (dark). It is a sibling of the Emplowise layered
 "E", not a recolour of it.
 
@@ -183,7 +184,7 @@ Deep Teal (light) or Aqua (dark). It is a sibling of the Emplowise layered
 | `assets/img/logo-emplostart-*-1200.png`, `*-512.png` | Decks, docs and email |
 | `assets/img/favicon.svg`, `favicon.ico`, `favicon.png`, `assets/img/apple-touch-icon.png` | Browser and home-screen icons |
 
-Use the lockup at 120 px or wider (header uses 188 × 30). Do not stretch,
+Use the lockup at 120 px or wider (header uses 170 × 32). Do not stretch,
 recolour, rotate, add shadows or gradients, or place the primary lockup on a
 dark ground; swap to the reverse file instead. The mark stays navy/white.
 
