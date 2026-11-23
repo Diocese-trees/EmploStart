@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EmploStart — six free career tools | Emplowise</title>
+<meta name="description" content="Six free career tools for career pivoters and job seekers: pivot planner, reimagination lab, market and fair-wage readiness, ATS resume checker, interview prep, and profile builder. Runs locally by default.">
+<meta name="emplostart-ai-endpoint" content="">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23081B3E'/%3E%3Ctext x='16' y='22' font-family='Montserrat,Arial' font-size='18' font-weight='800' fill='%235EEAD4' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="#main" aria-label="EmploStart home">
+    <span class="brand-mark" aria-hidden="true">E</span>
+    <span class="brand-name">EmploStart</span>
+  </a>
+  <div class="header-actions">
+    <span class="mode-badge" id="mode-badge" data-mode="local">Non-AI · runs locally</span>
+    <button type="button" class="btn btn--ghost btn--sm" id="ai-toggle" aria-pressed="false">Enable AI (opt-in)</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <p class="kicker">Free career utility</p>
+    <h1>Six free career tools. No account. No cost.</h1>
+    <p class="lede">Plan a pivot, test a new direction, check fair-wage readiness, score a resume against a job description, practise an interview, and tighten your profile. Everything runs in your browser by default; AI is optional and only with your consent.</p>
+    <p class="hero-note" id="mode-note">Non-AI mode: nothing you type leaves this page.</p>
+  </section>
+
+  <nav class="module-nav" aria-label="Career modules">
+    <button type="button" class="module-tab is-active" id="tab-pivot" data-panel="pivot" aria-selected="true">01 · Pivot Planner</button>
+    <button type="button" class="module-tab" id="tab-reimagine" data-panel="reimagine" aria-selected="false">02 · Reimagine Lab</button>
+    <button type="button" class="module-tab" id="tab-market" data-panel="market" aria-selected="false">03 · Market &amp; Fair Wage</button>
+    <button type="button" class="module-tab" id="tab-ats" data-panel="ats" aria-selected="false">04 · ATS Analyzer</button>
+    <button type="button" class="module-tab" id="tab-interview" data-panel="interview" aria-selected="false">05 · Interview Prep</button>
+    <button type="button" class="module-tab" id="tab-profile" data-panel="profile" aria-selected="false">06 · Profile Builder</button>
+  </nav>
+
+  <section class="panel" id="panel-pivot" role="tabpanel" aria-labelledby="tab-pivot">
+    <h2>Career Pivot Planner</h2>
+    <p class="panel-note">Turn where you are into a staged plan you can check yourself. No salaries, no promises.</p>
+    <form class="grid" data-module="pivot">
+      <label>Current role or field<input name="current" placeholder="Operations lead" autocomplete="off"></label>
+      <label>Target direction<input name="target" placeholder="Product management" autocomplete="off"></label>
+      <label class="wide">Transferable skills<textarea name="skills" rows="2" placeholder="budgeting, coaching, process design, vendor management"></textarea></label>
+      <label class="wide">Strengths<textarea name="strengths" rows="2" placeholder="calm under pressure, clear writing, turning messy requests into plans"></textarea></label>
+      <label>Hours per week<input name="hoursPerWeek" type="number" min="1" max="40" value="6"></label>
+      <label>Runway<select name="runway"><option value="explore">Exploring</option><option value="transition" selected>Transitioning</option><option value="urgent">Urgent</option></select></label>
+      <label>Risk appetite<select name="risk"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label>
+      <label>Network<select name="network"><option value="none">None yet</option><option value="some" selected>Some contacts</option><option value="strong">Strong</option></select></label>
+      <div class="actions wide"><button type="submit" class="btn btn--teal">Build my plan</button></div>
+    </form>
+    <div class="result" id="result-pivot" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="panel-reimagine" role="tabpanel" aria-labelledby="tab-reimagine" hidden>
+    <h2>Career Reimagination Lab</h2>
+    <p class="panel-note">Map your strengths and interests onto directions worth testing. These are prompts, not promises.</p>
+    <form class="grid" data-module="reimagine">
+      <label>Current role<input name="current" placeholder="Teacher" autocomplete="off"></label>
+      <label>Work style<select name="workStyle"><option value="">Not sure</option><option value="builder">Builder</option><option value="analyst">Analyst</option><option value="people">People</option><option value="operator">Operator</option><option value="communicator">Communicator</option><option value="advisor">Advisor</option></select></label>
+      <label class="wide">Strengths<textarea name="strengths" rows="2" placeholder="explaining hard ideas, planning, patience"></textarea></label>
+      <label class="wide">Interests<textarea name="interests" rows="2" placeholder="education, community, writing"></textarea></label>
+      <label class="wide">Constraints<textarea name="constraints" rows="2" placeholder="cannot relocate, evenings only"></textarea></label>
+      <div class="actions wide"><button type="submit" class="btn btn--teal">Show my matches</button></div>
+    </form>
+    <div class="result" id="result-reimagine" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="panel-market" role="tabpanel" aria-labelledby="tab-market" hidden>
+    <h2>Market Assessment &amp; Fair-Wage Readiness</h2>
+    <p class="panel-note">Score how ready you are to check a market and a fair wage. We never invent pay figures; we give you the research plan.</p>
+    <form class="grid" data-module="market">
+      <label>Target role<input name="role" placeholder="Data analyst" autocomplete="off"></label>
+      <label>Region or city<input name="region" placeholder="Lahore" autocomplete="off"></label>
+      <label>Experience<input name="years" placeholder="3 years" autocomplete="off"></label>
+      <label>Employers publish ranges?<select name="transparency"><option value="yes">Usually yes</option><option value="partial" selected>Sometimes</option><option value="no">Usually no</option></select></label>
+      <div class="actions wide"><button type="submit" class="btn btn--teal">Assess readiness</button></div>
+    </form>
+    <div class="result" id="result-market" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="panel-ats" role="tabpanel" aria-labelledby="tab-ats" hidden>
+    <h2>ATS Resume Analyzer</h2>
+    <p class="panel-note">Score a resume against one job description, then fix the gaps. Deterministic and private.</p>
+    <form class="grid" data-module="ats">
+      <label class="wide">Resume text<textarea name="resume" rows="7" placeholder="Paste the resume as plain text"></textarea></label>
+      <label class="wide">Job description<textarea name="jd" rows="5" placeholder="Paste the job description"></textarea></label>
+      <div class="actions wide"><button type="submit" class="btn btn--teal">Score my resume</button></div>
+    </form>
+    <div class="result" id="result-ats" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="panel-interview" role="tabpanel" aria-labelledby="tab-interview" hidden>
+    <h2>Interview Prep</h2>
+    <p class="panel-note">Get practice questions for a role, then score an answer against a clear rubric.</p>
+    <form class="grid" data-module="interview">
+      <label>Role<input name="role" placeholder="Product manager" autocomplete="off"></label>
+      <label>Level<select name="level"><option>Internship</option><option>Entry level</option><option selected>1 to 3 years</option><option>Career switch</option></select></label>
+      <div class="actions wide"><button type="submit" class="btn btn--teal">Get questions</button></div>
+    </form>
+    <div class="result" id="result-interview" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="panel-profile" role="tabpanel" aria-labelledby="tab-profile" hidden>
+    <h2>Profile Builder</h2>
+    <p class="panel-note">Rewrite a headline, summary and bullets, then browse 14 copy-paste prompts.</p>
+    <form class="grid" data-module="profile">
+      <label class="wide">Headline<input name="headline" placeholder="Operations lead moving into product management" autocomplete="off"></label>
+      <label class="wide">Summary<textarea name="summary" rows="3" placeholder="I am a hardworking operations lead passionate about product."></textarea></label>
+      <label class="wide">Bullets (one per line)<textarea name="bullets" rows="4" placeholder="Ran the weekly supply plan&#10;Trained 6 new hires&#10;Cut report time from 2 days to 4 hours"></textarea></label>
+      <label>Target role<input name="targetRole" placeholder="Product manager" autocomplete="off"></label>
+      <div class="actions wide"><button type="submit" class="btn btn--teal">Rewrite my profile</button></div>
+    </form>
+    <div class="result" id="result-profile" aria-live="polite"></div>
+    <div class="prompts">
+      <div class="prompts-head">
+        <h3>14 ready prompts</h3>
+        <input type="search" id="prompt-search" placeholder="Search prompts by task or keyword" aria-label="Search prompts">
+      </div>
+      <ul class="prompt-list" id="prompt-list"></ul>
+    </div>
+  </section>
+</main>
+
+<section class="pledge" aria-labelledby="pledge-heading">
+  <div class="shell">
+    <p class="kicker">Our pledge</p>
+    <h2 id="pledge-heading">Fair jobs and fair wages, as a standing commitment.</h2>
+    <p>EmploStart is free forever and runs locally by default. We align voluntarily with SDG 4, 8 and 10 and with generational workforce goals. That is a pledge, not a certification, and never a claim of UN endorsement.</p>
+    <p class="pledge-cta">Hiring instead of job hunting? <a href="https://diocese-trees.github.io/Emplowise-Website-Phase-I/free-hr-audit/">Run the free HR audit</a>.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>EmploStart by Emplowise. Free, local-first, and honest about what it cannot know.</p>
+  <p class="foot-links"><a href="https://diocese-trees.github.io/Emplowise-Website-Phase-I/">Emplowise</a> · <a href="https://diocese-trees.github.io/Emplowise-Website-Phase-I/docs/">Documentation</a></p>
+</footer>
+
+<dialog id="consent-dialog" aria-labelledby="consent-title">
+  <h2 id="consent-title">Turn on AI suggestions?</h2>
+  <p>AI mode is optional. If you turn it on, the text you submit for that request is sent to the configured AI endpoint so it can reply. Non-AI mode keeps everything in your browser.</p>
+  <p>You can turn AI off at any time. Nothing is sent until you choose to continue.</p>
+  <div class="dialog-actions">
+    <button type="button" class="btn btn--ghost" id="consent-cancel">Keep it local</button>
+    <button type="button" class="btn btn--teal" id="consent-accept">I understand, enable AI</button>
+  </div>
+</dialog>
+
+<script src="js/engines/ats.js" defer></script>
+<script src="js/engines/interview.js" defer></script>
+<script src="js/engines/profile.js" defer></script>
+<script src="js/engines/pivot.js" defer></script>
+<script src="js/engines/reimagine.js" defer></script>
+<script src="js/engines/market.js" defer></script>
+<script src="js/ai.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
