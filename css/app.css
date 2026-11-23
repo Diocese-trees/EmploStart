@@ -36,11 +36,9 @@ img { max-width: 100%; height: auto; }
   background: var(--surface-card);
   border-bottom: 1px solid var(--border-subtle);
 }
-.brand { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; text-decoration: none; color: var(--navy); font-family: var(--font-display); font-weight: 800; flex: 0 0 auto; }
-.brand .logo { display: inline-block; height: 28px; width: auto; }
+.brand { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; flex: 0 0 auto; }
+.brand .logo { display: inline-block; height: 30px; width: auto; }
 .brand .logo-dark { display: none; }
-.brand-divider { width: 1px; height: 22px; background: var(--line-strong); }
-.brand-app { font-size: .95rem; letter-spacing: -.01em; }
 .header-actions { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; justify-content: flex-end; min-width: 0; }
 
 .status-pill {

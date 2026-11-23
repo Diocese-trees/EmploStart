@@ -19,6 +19,10 @@ a real product with its own Pages deployment.
   subtle B2B HR Audit bridge on tool outputs.
 - Brand Kit 2026 only. Zero neon glows, decorative gradients in body copy, or
   fake browser chrome. No raw `[To Verify]` markers in shipped HTML.
+- The shell uses the EmploStart lockup (`assets/img/logo-emplostart-*.svg`),
+  not the Emplowise logo. Light surfaces get the primary file, dark and navy
+  grounds get the reverse file; never recolour, stretch or add effects. The
+  mark is a start-flag sibling of the Emplowise layered "E".
 - The vault is local by default. Nothing is written until the person confirms a
   preview, a parsed value never overwrites a hand-typed one, and session mode
   must clear the persistent copy immediately.

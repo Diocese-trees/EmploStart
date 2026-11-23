@@ -8,7 +8,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { root, makeWindow, loadInto } from './harness.mjs';
 
@@ -230,4 +230,33 @@ test('vault round-trips new fields through storage', () => {
   assert.equal(again.persona, 'founder');
   assert.equal(again.story_300.who_am_i, 'Builder');
   assert.equal(JSON.stringify(again.challenge_progress.completed_days), '[7]');
+});
+
+test('header ships the EmploStart lockup and icons, with no broken paths', () => {
+  const html = readFileSync(join(root, 'index.html'), 'utf8');
+  assert.match(html, /assets\/img\/logo-emplostart-primary\.svg/);
+  assert.match(html, /assets\/img\/logo-emplostart-reverse\.svg/);
+  assert.match(html, /rel="apple-touch-icon" href="assets\/img\/apple-touch-icon\.png"/);
+  assert.ok(!/logo-primary-250\.webp|brand-divider/.test(html), 'old Emplowise header is gone');
+
+  for (const file of [
+    'assets/img/logo-emplostart-primary.svg',
+    'assets/img/logo-emplostart-reverse.svg',
+    'assets/img/logo-emplostart-mark.svg',
+    'assets/img/logo-emplostart-mark-reverse.svg',
+    'assets/img/favicon.svg',
+    'assets/img/apple-touch-icon.png',
+    'favicon.ico',
+    'favicon.png'
+  ]) {
+    assert.ok(existsSync(join(root, file)), `${file} exists`);
+    assert.ok(statSync(join(root, file)).size > 0, `${file} is not empty`);
+  }
+
+  const primary = readFileSync(join(root, 'assets/img/logo-emplostart-primary.svg'), 'utf8');
+  const reverse = readFileSync(join(root, 'assets/img/logo-emplostart-reverse.svg'), 'utf8');
+  assert.match(primary, /#081B3E/);
+  assert.match(primary, /#0F766E/);
+  assert.match(reverse, /#FFFFFF/);
+  assert.match(reverse, /#5EEAD4/);
 });
