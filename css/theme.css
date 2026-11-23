@@ -266,6 +266,32 @@ html[data-theme="dark"] .story-meter.is-over { color: #fcd34d; }
 html[data-theme="dark"] .story-summary { background: var(--d-surface-2); border-color: var(--d-line); }
 html[data-theme="dark"] .story-summary strong { color: #f7fbff; }
 
+
+/* ---------------------------------------------------------------- challenge */
+
+html[data-theme="dark"] .progress { background: #0a1d38; border-color: var(--d-line); }
+html[data-theme="dark"] .challenge-stats p { color: var(--d-ink); }
+html[data-theme="dark"] .challenge-streak { color: var(--aqua) !important; }
+html[data-theme="dark"] .challenge-card {
+  background: var(--d-surface);
+  border-color: var(--d-line);
+  color: var(--d-ink);
+}
+html[data-theme="dark"] .challenge-card:hover { border-color: var(--teal); }
+html[data-theme="dark"] .challenge-card.is-selected { border-color: var(--aqua); box-shadow: inset 0 0 0 1px var(--aqua); }
+html[data-theme="dark"] .challenge-card.is-done { background: #0e2444; border-color: rgba(94, 234, 212, .35); }
+html[data-theme="dark"] .challenge-card-day,
+html[data-theme="dark"] .challenge-card.is-done .challenge-card-state { color: var(--aqua); }
+html[data-theme="dark"] .challenge-card-title { color: var(--d-ink); }
+html[data-theme="dark"] .challenge-task { background: var(--d-surface-2); color: var(--d-ink); border-left-color: var(--teal); }
+html[data-theme="dark"] .challenge-note-label { color: var(--d-ink); }
+html[data-theme="dark"] .challenge-day .btn.is-done { border-color: var(--teal); color: var(--aqua); }
+html[data-theme="dark"] .guide-ai summary { color: var(--d-ink); }
+html[data-theme="dark"] .guide-steps { color: var(--d-ink-soft); }
+html[data-theme="dark"] .status-open { color: var(--d-ink-soft); }
+html[data-theme="dark"] .link-button,
+html[data-theme="dark"] .site-footer a { color: var(--aqua); }
+
 /* ---------------------------------------------------------------- footer */
 
 html[data-theme="dark"] .pledge { background: #061a33; color: #c9d8ea; }

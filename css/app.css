@@ -89,7 +89,7 @@ main { max-width: var(--shell); margin: 0 auto; padding: 1.4rem var(--gutter) 3.
 /* ---------------------------------------------------------------- stepper */
 
 .stepper {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem;
   background: var(--surface-card); border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm); padding: .35rem; margin-bottom: 1.6rem;
   position: sticky; top: calc(var(--header-h) + 4px); z-index: var(--z-sticky);
@@ -404,6 +404,58 @@ dialog { border: none; border-radius: var(--radius); padding: 1.4rem; max-width:
 dialog::backdrop { background: rgba(8, 27, 62, .55); }
 .dialog-actions { display: flex; gap: .6rem; justify-content: flex-end; margin-top: 1.2rem; }
 
+
+/* ------------------------------------------------------------ challenge 30 */
+
+.progress { height: 9px; border-radius: 999px; background: var(--ice); border: 1px solid var(--border-subtle); overflow: hidden; }
+.progress > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--teal-deep), var(--teal)); transition: width .35s ease; }
+
+.challenge-summary { margin-bottom: 1rem; }
+.challenge-stats { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.challenge-stats p { margin: 0; font-weight: 700; color: var(--navy); }
+.challenge-streak { color: var(--teal-deep) !important; font-size: .84rem; }
+.challenge-controls { display: flex; justify-content: space-between; align-items: center; gap: .6rem; flex-wrap: wrap; margin-top: .9rem; }
+.challenge-weeks { display: flex; gap: .4rem; flex-wrap: wrap; }
+.challenge-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .6rem; margin: 1.1rem 0; }
+.challenge-card {
+  display: flex; flex-direction: column; gap: .3rem; text-align: left;
+  padding: .7rem .7rem .6rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle); background: var(--surface-card);
+  color: var(--ink-primary); cursor: pointer; min-height: 116px;
+}
+.challenge-card:hover { border-color: var(--teal); transform: translateY(-1px); }
+.challenge-card.is-selected { border-color: var(--teal-deep); box-shadow: inset 0 0 0 1px var(--teal-deep); }
+.challenge-card.is-done { background: var(--ice); border-color: rgba(13, 148, 136, .4); }
+.challenge-card-top { display: flex; justify-content: space-between; align-items: center; font-size: .7rem; font-weight: 700; letter-spacing: .04em; color: var(--ink-muted); text-transform: uppercase; }
+.challenge-card-day { color: var(--teal-deep); }
+.challenge-card-title { font-family: var(--font-display); font-size: .9rem; font-weight: 700; color: var(--navy); line-height: 1.25; }
+.challenge-card-state { margin-top: auto; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+.challenge-card.is-done .challenge-card-state { color: var(--teal-deep); }
+.challenge-plan { display: none; font-size: .72rem; color: var(--ink-muted); }
+.challenge-plan-task, .challenge-plan-action { display: block; margin-top: .2rem; }
+
+.challenge-day { margin-top: .6rem; }
+.challenge-day h3 { margin-top: .2rem; }
+.challenge-task { background: var(--ice); border-left: 3px solid var(--teal); padding: .7rem .8rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--navy); font-weight: 600; }
+.challenge-tip { color: var(--ink-muted); }
+.challenge-actions { display: flex; gap: .5rem; flex-wrap: wrap; margin: .9rem 0 1rem; }
+.challenge-note-label { display: block; font-size: .82rem; font-weight: 700; margin-bottom: .35rem; color: var(--navy); }
+.challenge-day textarea { width: 100%; margin-bottom: .5rem; }
+.challenge-day .btn.is-done { border-color: var(--teal-deep); color: var(--teal-deep); }
+
+.recommended-strip { margin: 1rem 0; border-color: rgba(13, 148, 136, .35); }
+.recommended-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
+.guide-ai { margin: 1rem 0; }
+.guide-ai summary { cursor: pointer; font-weight: 700; color: var(--navy); min-height: 44px; display: flex; align-items: center; }
+.guide-ai summary::marker { color: var(--teal-deep); }
+.guide-steps { margin: .5rem 0 0 1.2rem; display: grid; gap: .45rem; color: var(--ink-muted); }
+
+.status-block { margin-top: .9rem; }
+.status-block h3 { margin-bottom: .3rem; font-size: 1rem; }
+.status-block ul { margin: 0 0 0 1.1rem; padding: 0; display: grid; gap: .25rem; }
+.status-block p { margin: 0 0 .4rem; }
+.status-open { background: none; border: 0; cursor: pointer; font-family: var(--font-body); }
+
 /* ---------------------------------------------------------------- responsive */
 
 @media (max-width: 1080px) {
@@ -411,6 +463,7 @@ dialog::backdrop { background: rgba(8, 27, 62, .55); }
 }
 @media (max-width: 900px) {
   .paths { grid-template-columns: 1fr; }
+  .challenge-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .dashboard { grid-template-columns: 1fr; }
   .module-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .status-pill { display: none; }
@@ -426,6 +479,7 @@ dialog::backdrop { background: rgba(8, 27, 62, .55); }
   .persona-grid { grid-template-columns: 1fr; }
   .grid { grid-template-columns: 1fr; }
   .module-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .challenge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .library-list { grid-template-columns: 1fr; }
   .workbench-form { grid-template-columns: 1fr; }
   .preview-row { grid-template-columns: 1fr; gap: .1rem; }
@@ -436,6 +490,8 @@ dialog::backdrop { background: rgba(8, 27, 62, .55); }
 }
 @media (max-width: 380px) {
   .library-controls { gap: .5rem; }
+  .challenge-grid { grid-template-columns: 1fr; }
+  .challenge-card { min-height: 0; }
   .btn, .btn--sm { padding: .6rem .75rem; }
   .step-button span:last-child { font-size: .7rem; }
 }
@@ -448,4 +504,13 @@ dialog::backdrop { background: rgba(8, 27, 62, .55); }
   .site-header, .stepper, .module-nav, .pledge, .site-footer, .coach, dialog, .path-open, .start-actions { display: none; }
   .panel, .card { box-shadow: none; border-color: #ccc; }
   .view[hidden] { display: block; }
+  body.print-challenge #view-start,
+  body.print-challenge #view-profile,
+  body.print-challenge #view-tools { display: none !important; }
+  body.print-challenge #view-challenge { display: block !important; }
+  body.print-challenge .challenge-controls,
+  body.print-challenge .challenge-day { display: none; }
+  body.print-challenge .challenge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; }
+  body.print-challenge .challenge-card { break-inside: avoid; border-color: #999; min-height: 0; }
+  body.print-challenge .challenge-plan { display: block; }
 }

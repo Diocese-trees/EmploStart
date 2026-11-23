@@ -152,9 +152,9 @@
         }
         if (target.indexOf('challenge:') === 0) {
             var day = Number(target.slice(10)) || 1;
+            showView('challenge');
             document.dispatchEvent(new CustomEvent('emplostart:challenge', { detail: { day: day } }));
             if (window.EmploStartChallenge) { window.EmploStartChallenge.openDay(day); }
-            else { showView('profile'); }
             return;
         }
         if (target.indexOf('guide:') === 0) {
@@ -551,6 +551,17 @@
             navigate(event.detail && event.detail.target);
         });
         document.addEventListener('emplostart:vault-changed', refreshDash);
+
+        var statusDialog = document.getElementById('status-dialog');
+        var statusClose = document.getElementById('status-close');
+        if (statusDialog && statusClose) {
+            statusClose.addEventListener('click', function () { statusDialog.close(); });
+        }
+        if (statusDialog) {
+            statusDialog.addEventListener('click', function (event) {
+                if (event.target === statusDialog) { statusDialog.close(); }
+            });
+        }
 
         if (els.personaContinue) {
             els.personaContinue.addEventListener('click', function () {

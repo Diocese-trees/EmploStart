@@ -1,0 +1,604 @@
+{
+  "version": 1,
+  "title": "The 30-Day Mindset & Profile Challenge",
+  "intro": "One small, honest action a day for four weeks. Built for people who are tired of forms, not for people who love productivity apps. Every day saves to your local vault, links to one tool or prompt, and adapts its tip to your persona.",
+  "note": "No salaries, percentiles or scraped data. Pay exercises ask you to collect real local evidence and say plainly when a number is unknown.",
+  "weeks": [
+    {
+      "id": 1,
+      "label": "Week 1",
+      "title": "Mindset, clarity and evidence",
+      "summary": "Get honest, choose one direction, and collect proof that already exists."
+    },
+    {
+      "id": 2,
+      "label": "Week 2",
+      "title": "Proof, CV and ATS",
+      "summary": "Turn evidence into a clean CV that people and parsers can both read."
+    },
+    {
+      "id": 3,
+      "label": "Week 3",
+      "title": "LinkedIn, brand and AI",
+      "summary": "Say what you do in public, and use AI as a thinking helper with privacy intact."
+    },
+    {
+      "id": 4,
+      "label": "Week 4",
+      "title": "Applications, interviews and fair pay",
+      "summary": "Apply deliberately, practise the interview, and negotiate with real local evidence."
+    }
+  ],
+  "days": [
+    {
+      "day": 1,
+      "week": 1,
+      "title": "Name the truth",
+      "summary": "Start with an honest paragraph, not a performance.",
+      "task": "Write 300 words about where you actually are: what pays the bills, what is draining you, and what you want next. Use the story studio so it saves to your vault.",
+      "tip": "Ten honest minutes beats ten polished drafts. Nobody else reads this.",
+      "persona_tips": {
+        "stuck_employee": "Say the pay problem out loud. It is data, not disloyalty.",
+        "student": "Write what you have actually done, not what you wish you had.",
+        "founder": "Name the customer problem, not the product idea.",
+        "women_career": "Include the break without apologising for it.",
+        "beginner_ai_brand": "Write in your own words. Perfect English is not the task."
+      },
+      "action": {
+        "label": "Open the story studio",
+        "target": "story"
+      }
+    },
+    {
+      "day": 2,
+      "week": 1,
+      "title": "One sentence that is true",
+      "summary": "Compress the story into a line you could say at a family dinner.",
+      "task": "Write one sentence: who you are, what you are good at, and the direction you are testing. Save it as your headline draft.",
+      "tip": "If the sentence needs a comma splice to survive, it is two sentences.",
+      "persona_tips": {
+        "stuck_employee": "Keep the number and the result, drop the job title.",
+        "student": "Trade job title for proof: a project, a result, a skill you can show.",
+        "founder": "Say who you help and what changes for them.",
+        "women_career": "Lead with what you can do now, then mention the gap only if asked.",
+        "beginner_ai_brand": "Describe the outcome in plain words; leave the tool names for later."
+      },
+      "action": {
+        "label": "Open Profile Builder",
+        "target": "tool:profile"
+      }
+    },
+    {
+      "day": 3,
+      "week": 1,
+      "title": "Three finished things",
+      "summary": "Evidence starts with things that actually ended, however small.",
+      "task": "List three things you finished in the last two years. For each, note who benefited and what changed. Do not filter for impressiveness yet.",
+      "tip": "Finished beats impressive. A tidy handover counts.",
+      "persona_tips": {
+        "stuck_employee": "Pick the fixes that saved time or money, even small ones.",
+        "student": "Coursework and side projects count as finished work.",
+        "founder": "Name three moments a customer said thank you.",
+        "women_career": "Include unpaid work with a clear result.",
+        "beginner_ai_brand": "Include anything you learned and then used."
+      },
+      "action": {
+        "label": "Build my evidence inventory",
+        "target": "prompt:P01"
+      }
+    },
+    {
+      "day": 4,
+      "week": 1,
+      "title": "One direction to test",
+      "summary": "Choose one direction for this month instead of five forever.",
+      "task": "Write two possible directions and pick one to test for 30 days. Note what would have to be true for it to be a good move.",
+      "tip": "A tested direction can be abandoned without shame. That is the point.",
+      "persona_tips": {
+        "stuck_employee": "Pick the direction that pays fairly for the work you already do.",
+        "student": "Pick one that lets you show proof, not one that needs permission.",
+        "founder": "Pick the smallest version of the venture you can test with real users.",
+        "women_career": "Pick something compatible with the hours you actually have.",
+        "beginner_ai_brand": "Pick a direction where AI is a helper, not the whole plan."
+      },
+      "action": {
+        "label": "Open the Pivot Planner",
+        "target": "tool:pivot"
+      }
+    },
+    {
+      "day": 5,
+      "week": 1,
+      "title": "Evidence versus adjectives",
+      "summary": "Replace one claim with a consequence.",
+      "task": "Take a sentence like 'hardworking team player' and rewrite it as a specific action plus a result. Keep the number only if it is true.",
+      "tip": "If you cannot prove it, cut it or turn it into a learning goal.",
+      "persona_tips": {
+        "stuck_employee": "State the decision you made, not the hours you sat there.",
+        "student": "Use project scope when you lack work experience.",
+        "founder": "Use a customer quote or a usage fact.",
+        "women_career": "Use continuity: what kept running because of you.",
+        "beginner_ai_brand": "Show the before and after of one task you automated or organised."
+      },
+      "action": {
+        "label": "Rebuild my resume end to end",
+        "target": "prompt:P05"
+      }
+    },
+    {
+      "day": 6,
+      "week": 1,
+      "title": "A boundary you can keep",
+      "summary": "Plan the week so the challenge does not become another guilt pile.",
+      "task": "Choose a 20-minute slot on four days this week and write it down. Decide now what you will skip if the week goes sideways.",
+      "tip": "Consistency at 20 minutes beats one heroic Sunday.",
+      "persona_tips": {
+        "stuck_employee": "Protect the slot before work claims it.",
+        "student": "Use gaps between classes, not the whole evening.",
+        "founder": "Batch one hour twice a week instead of daily fragments.",
+        "women_career": "Use childcare or commute time honestly; do not plan around imaginary hours.",
+        "beginner_ai_brand": "Twenty minutes is enough to learn one small thing."
+      },
+      "action": {
+        "label": "Take the 12-question check",
+        "target": "quiz"
+      }
+    },
+    {
+      "day": 7,
+      "week": 1,
+      "title": "Week 1 review",
+      "summary": "Look back before adding more.",
+      "task": "Re-read your story and your one sentence. Change one word that is not true now that you have thought about it.",
+      "tip": "Revision is not starting over. It is evidence of thinking.",
+      "persona_tips": {
+        "stuck_employee": "Check that the story names the pay issue without exaggeration.",
+        "student": "Check that the sentence works without a job title.",
+        "founder": "Check that the venture line names a real customer.",
+        "women_career": "Check that the gap is stated as a fact, not a confession.",
+        "beginner_ai_brand": "Check that you understand every word you wrote."
+      },
+      "action": {
+        "label": "Revisit the story studio",
+        "target": "story"
+      }
+    },
+    {
+      "day": 8,
+      "week": 2,
+      "title": "CV spine",
+      "summary": "Get the structure clean before polishing words.",
+      "task": "Fill the Profile Builder with headline, summary and four bullets. Save it to the vault, then read it aloud once.",
+      "tip": "The first screen decides whether the rest is read.",
+      "persona_tips": {
+        "stuck_employee": "Lead with scope and results, not duties.",
+        "student": "Lead with projects when work history is thin.",
+        "founder": "Lead with traction and customer proof.",
+        "women_career": "Lead with current capability, then the timeline.",
+        "beginner_ai_brand": "Lead with what you can now do that you could not before."
+      },
+      "action": {
+        "label": "Open Profile Builder",
+        "target": "tool:profile"
+      }
+    },
+    {
+      "day": 9,
+      "week": 2,
+      "title": "Make one bullet measurable",
+      "summary": "One honest number beats ten vague verbs.",
+      "task": "Pick your strongest bullet and add a true measure: time saved, volume handled, people helped, error rate reduced. If you have no number, describe the scale instead.",
+      "tip": "Never invent a number. Scale and scope are honest alternatives.",
+      "persona_tips": {
+        "stuck_employee": "Use the size of the budget or team you handled.",
+        "student": "Use the number of users, teammates or submissions.",
+        "founder": "Use a customer fact you can defend.",
+        "women_career": "Use the number of people you kept supported or trained.",
+        "beginner_ai_brand": "Use the number of steps you removed from a process."
+      },
+      "action": {
+        "label": "Rebuild my resume end to end",
+        "target": "prompt:P05"
+      }
+    },
+    {
+      "day": 10,
+      "week": 2,
+      "title": "Tailor to one real job",
+      "summary": "Stop sending the same CV to every advert.",
+      "task": "Pick one real job description. Decode what it actually wants, then change three lines in your CV to answer it.",
+      "tip": "Tailoring is translation, not fabrication.",
+      "persona_tips": {
+        "stuck_employee": "Match the level of ownership the advert asks for.",
+        "student": "Map coursework and projects to the listed duties.",
+        "founder": "Map customer problems to the product scope.",
+        "women_career": "Address the gap only where the advert makes it essential.",
+        "beginner_ai_brand": "Use the advert's words only where they are also true."
+      },
+      "action": {
+        "label": "Decode what this job really wants",
+        "target": "prompt:P03"
+      }
+    },
+    {
+      "day": 11,
+      "week": 2,
+      "title": "ATS self-check",
+      "summary": "Make the file readable by a machine without making it ugly.",
+      "task": "Run your CV through the ATS Analyzer. Fix headings, dates and file type, then re-run once.",
+      "tip": "A clean single-column file is rarely the wrong answer.",
+      "persona_tips": {
+        "stuck_employee": "Check the job title appears as the advert writes it.",
+        "student": "Check projects are under a clear heading.",
+        "founder": "Check the venture name and role are unambiguous.",
+        "women_career": "Check the timeline is readable, gaps included.",
+        "beginner_ai_brand": "Check there are no tables or text boxes hiding content."
+      },
+      "action": {
+        "label": "Open the ATS Analyzer",
+        "target": "tool:ats"
+      }
+    },
+    {
+      "day": 12,
+      "week": 2,
+      "title": "One case study",
+      "summary": "A short case study can outrank a long CV.",
+      "task": "Write one case study: problem, what you did, what changed, what you would do differently. Keep it under 250 words.",
+      "tip": "Specific beats senior. Show the thinking, not just the outcome.",
+      "persona_tips": {
+        "stuck_employee": "Pick a problem inside your current job that you solved quietly.",
+        "student": "Pick a class or club project with a real user.",
+        "founder": "Pick one customer problem and the smallest useful fix.",
+        "women_career": "Pick a process you rebuilt around real constraints.",
+        "beginner_ai_brand": "Pick something you improved after learning the tool."
+      },
+      "action": {
+        "label": "Turn my work into case studies",
+        "target": "prompt:P06"
+      }
+    },
+    {
+      "day": 13,
+      "week": 2,
+      "title": "Parser-safe export",
+      "summary": "Export a version that survives upload portals.",
+      "task": "Export a clean, single-column PDF or DOCX and test it on one application portal. Check the preview before submitting.",
+      "tip": "If the preview looks scrambled, fix the file, not the portal.",
+      "persona_tips": {
+        "stuck_employee": "Keep the file name simple and professional.",
+        "student": "Keep project headings consistent with the CV.",
+        "founder": "Keep the venture summary factual and short.",
+        "women_career": "Keep dates in one format throughout.",
+        "beginner_ai_brand": "Keep bullet characters simple."
+      },
+      "action": {
+        "label": "Export a parser-safe resume",
+        "target": "prompt:P07"
+      }
+    },
+    {
+      "day": 14,
+      "week": 2,
+      "title": "Week 2 review",
+      "summary": "Check the file against one advert, honestly.",
+      "task": "Re-read the advert and your CV side by side. Mark three things that still do not match and fix one today.",
+      "tip": "You are looking for gaps, not perfection.",
+      "persona_tips": {
+        "stuck_employee": "Check that your current title does not undersell the work.",
+        "student": "Check that projects carry the skills the advert names.",
+        "founder": "Check that customer proof is visible without clicking.",
+        "women_career": "Check that the gap is not the first thing a reader sees.",
+        "beginner_ai_brand": "Check that the file is not longer than it needs to be."
+      },
+      "action": {
+        "label": "Open the ATS Analyzer",
+        "target": "tool:ats"
+      }
+    },
+    {
+      "day": 15,
+      "week": 3,
+      "title": "A headline that says something",
+      "summary": "Your headline is a signpost, not a slogan.",
+      "task": "Rewrite the headline to say what you do and for whom. Remove buzzwords and keep one specific noun.",
+      "tip": "If a stranger cannot repeat it, it is too abstract.",
+      "persona_tips": {
+        "stuck_employee": "Name the function and the result you protect.",
+        "student": "Name the skill you can demonstrate today.",
+        "founder": "Name the customer and the change you create.",
+        "women_career": "Name your returning capability without the apology.",
+        "beginner_ai_brand": "Name one thing you can now do with AI, honestly."
+      },
+      "action": {
+        "label": "Rewrite my LinkedIn profile",
+        "target": "prompt:P04"
+      }
+    },
+    {
+      "day": 16,
+      "week": 3,
+      "title": "About section in plain words",
+      "summary": "Write the About section as if explaining your work to a neighbour.",
+      "task": "Draft five short paragraphs: what you do, proof, what you are learning, what you want, how to reach you. Cut any sentence that only sounds impressive.",
+      "tip": "Short paragraphs are read; walls are skipped.",
+      "persona_tips": {
+        "stuck_employee": "Explain the work without complaining about the employer.",
+        "student": "Explain what you are studying and what you built.",
+        "founder": "Explain the problem you are solving and for whom.",
+        "women_career": "Explain the break in one calm sentence.",
+        "beginner_ai_brand": "Explain what you can do now that you could not before."
+      },
+      "action": {
+        "label": "Rewrite my LinkedIn profile",
+        "target": "prompt:P04"
+      }
+    },
+    {
+      "day": 17,
+      "week": 3,
+      "title": "One proof post",
+      "summary": "Publish one small, useful thing instead of announcing a job hunt.",
+      "task": "Post one short lesson, fix or before-and-after from your work. No hashtags needed, no fake inspiration.",
+      "tip": "Useful posts get saved. Announcements get scrolled past.",
+      "persona_tips": {
+        "stuck_employee": "Share a process fix others in your role could reuse.",
+        "student": "Share what a project taught you, not just that you finished it.",
+        "founder": "Share a customer insight with the numbers removed.",
+        "women_career": "Share a returning-to-work lesson that helps someone else.",
+        "beginner_ai_brand": "Share one thing AI did well and one thing it got wrong."
+      },
+      "action": {
+        "label": "Turn my work into case studies",
+        "target": "prompt:P06"
+      }
+    },
+    {
+      "day": 18,
+      "week": 3,
+      "title": "Outreach without cringe",
+      "summary": "Ask one specific person one specific question.",
+      "task": "Find one person doing the work you want. Send a five-line message: who you are, what you noticed, one question, no ask for a job.",
+      "tip": "Specific compliments get replies. Mass templates get ignored.",
+      "persona_tips": {
+        "stuck_employee": "Ask about how the role is structured, not for a referral.",
+        "student": "Ask about the project, not for an internship.",
+        "founder": "Ask a potential user about their problem, not for investment.",
+        "women_career": "Ask about flexible ways the team works.",
+        "beginner_ai_brand": "Ask which free resource actually helped them."
+      },
+      "action": {
+        "label": "Write outreach that gets replies",
+        "target": "prompt:P08"
+      }
+    },
+    {
+      "day": 19,
+      "week": 3,
+      "title": "Ask AI one useful question",
+      "summary": "Use AI as a thinking helper, not an answer machine.",
+      "task": "Open the 30-second AI guide, then use one prompt with your real details. Check every claim before you reuse it.",
+      "tip": "Generic input gives generic output. Your details do the work.",
+      "persona_tips": {
+        "stuck_employee": "Ask it to stress-test the decision before you resign.",
+        "student": "Ask it to explain a concept you missed in class.",
+        "founder": "Ask it to challenge the customer problem, not validate it.",
+        "women_career": "Ask it to rewrite a sentence without adding facts.",
+        "beginner_ai_brand": "Ask it to define a term in plain language, then verify elsewhere."
+      },
+      "action": {
+        "label": "Open the 30-second AI guide",
+        "target": "guide:ai"
+      }
+    },
+    {
+      "day": 20,
+      "week": 3,
+      "title": "Privacy and AI",
+      "summary": "Know what leaves the page and what stays.",
+      "task": "Check the Shared PC toggle and confirm which mode you are in. Decide what you will never paste into an AI tool.",
+      "tip": "Names, contact details and client data do not need to leave your browser.",
+      "persona_tips": {
+        "stuck_employee": "Never paste internal reports or colleague names.",
+        "student": "Never paste student records or unpublished work.",
+        "founder": "Never paste customer lists or contracts.",
+        "women_career": "Never paste identity documents or salary slips.",
+        "beginner_ai_brand": "Never paste anything you would not email a stranger."
+      },
+      "action": {
+        "label": "Open your local vault",
+        "target": "vault"
+      }
+    },
+    {
+      "day": 21,
+      "week": 3,
+      "title": "Week 3 review",
+      "summary": "Check whether your profile now matches your proof.",
+      "task": "Compare your headline, About section and one post. Fix the claim that is not backed by evidence.",
+      "tip": "Consistency across three surfaces is enough for now.",
+      "persona_tips": {
+        "stuck_employee": "Check that the profile does not read like a resignation letter.",
+        "student": "Check that projects are linked, not just named.",
+        "founder": "Check that the venture claim matches what exists.",
+        "women_career": "Check that the gap and the capability both appear.",
+        "beginner_ai_brand": "Check that the AI claim is something you can demonstrate."
+      },
+      "action": {
+        "label": "Rewrite my LinkedIn profile",
+        "target": "prompt:P04"
+      }
+    },
+    {
+      "day": 22,
+      "week": 4,
+      "title": "Ten applications, tracked",
+      "summary": "Run a small, deliberate batch instead of scattered clicks.",
+      "task": "Apply to five roles that genuinely fit and log them: date, role, tailoring done, response. Add five more if the week allows.",
+      "tip": "A tracked application is a test you can learn from.",
+      "persona_tips": {
+        "stuck_employee": "Prioritise roles that pay for the work you already do.",
+        "student": "Prioritise junior roles that ask for projects you have.",
+        "founder": "Prioritise conversations with potential users or partners.",
+        "women_career": "Prioritise employers with stated flexible policies.",
+        "beginner_ai_brand": "Prioritise roles where the tools you learned are listed."
+      },
+      "action": {
+        "label": "Open the Market & Fair Wage tool",
+        "target": "tool:market"
+      }
+    },
+    {
+      "day": 23,
+      "week": 4,
+      "title": "Diagnose the silence",
+      "summary": "No replies is information, not a verdict on you.",
+      "task": "Pick five applications with no response. Check the role fit, the first screen of your CV and the timing. Change one variable for the next batch.",
+      "tip": "Change one thing at a time so you can tell what worked.",
+      "persona_tips": {
+        "stuck_employee": "Check whether the advert was already stale.",
+        "student": "Check whether the projects were visible in the top third.",
+        "founder": "Check whether the venture framing confused the reader.",
+        "women_career": "Check whether the gap was over-explained.",
+        "beginner_ai_brand": "Check whether the file passed the portal preview."
+      },
+      "action": {
+        "label": "Diagnose why I am not getting replies",
+        "target": "prompt:P09"
+      }
+    },
+    {
+      "day": 24,
+      "week": 4,
+      "title": "Practise one scored answer",
+      "summary": "One rehearsed story beats ten vague answers.",
+      "task": "Use the interview tool to answer one behavioural question. Score it, then rewrite the weakest part once.",
+      "tip": "Structure, specificity and ownership carry most answers.",
+      "persona_tips": {
+        "stuck_employee": "Use a conflict you handled without burning the team.",
+        "student": "Use a project where your contribution was clear.",
+        "founder": "Use a decision where the evidence changed your mind.",
+        "women_career": "Use a period where you rebuilt routine and confidence.",
+        "beginner_ai_brand": "Use a task where you chose the tool and explained why."
+      },
+      "action": {
+        "label": "Open the Interview Prep tool",
+        "target": "tool:interview"
+      }
+    },
+    {
+      "day": 25,
+      "week": 4,
+      "title": "Take-home sanity plan",
+      "summary": "Plan the work before you accept the brief.",
+      "task": "Read a take-home brief and write a two-hour plan: what you will do, what you will leave out, and how you will explain the trade-off.",
+      "tip": "A clear scope note is part of the answer.",
+      "persona_tips": {
+        "stuck_employee": "Protect your evenings; ask what the brief is really testing.",
+        "student": "Ask for the evaluation criteria before starting.",
+        "founder": "Ask whether the brief relates to a real customer problem.",
+        "women_career": "Ask for a deadline that fits your actual hours.",
+        "beginner_ai_brand": "Ask which parts are essential if the brief is huge."
+      },
+      "action": {
+        "label": "Plan my take-home and first 90 days",
+        "target": "prompt:P11"
+      }
+    },
+    {
+      "day": 26,
+      "week": 4,
+      "title": "Know your fair range",
+      "summary": "Research a range from real local sources, not guesses.",
+      "task": "Collect three local data points for the role: a public salary guide, a live advert with a range, and one person you can ask. Write the range and your evidence.",
+      "tip": "If no range exists, say so and negotiate on scope and review date instead.",
+      "persona_tips": {
+        "stuck_employee": "Compare your current pay to the range for the same scope.",
+        "student": "Compare internship or junior ranges, not senior ones.",
+        "founder": "Separate founder pay from venture revenue.",
+        "women_career": "Compare full-time and flexible equivalents carefully.",
+        "beginner_ai_brand": "Use entry-level ranges for the role you can do now."
+      },
+      "action": {
+        "label": "Open Market & Fair Wage",
+        "target": "tool:market"
+      }
+    },
+    {
+      "day": 27,
+      "week": 4,
+      "title": "Negotiate one term",
+      "summary": "Practise the sentence before you need it.",
+      "task": "Write and say one negotiation sentence out loud: the range, the evidence, and one flexible term you would accept.",
+      "tip": "You are negotiating the whole package: pay, hours, learning, review date.",
+      "persona_tips": {
+        "stuck_employee": "Ask for a review date tied to a measurable change.",
+        "student": "Ask for feedback and a clear conversion path.",
+        "founder": "Ask for a trial scope before a permanent commitment.",
+        "women_career": "Ask for hours or location that make the role workable.",
+        "beginner_ai_brand": "Ask for a learning budget or paid time to use it."
+      },
+      "action": {
+        "label": "Negotiate the offer fairly",
+        "target": "prompt:P12"
+      }
+    },
+    {
+      "day": 28,
+      "week": 4,
+      "title": "Learning that pays back",
+      "summary": "Choose learning with a use date, not a shopping list.",
+      "task": "Pick one course, certificate or free path. Write what you will build with it in 30 days and how you will show it.",
+      "tip": "If you cannot name the output, wait before paying.",
+      "persona_tips": {
+        "stuck_employee": "Pick learning that closes the gap the adverts name.",
+        "student": "Pick learning that produces a project you can show.",
+        "founder": "Pick learning that helps you test the customer problem.",
+        "women_career": "Pick learning that fits the hours you really have.",
+        "beginner_ai_brand": "Pick one free path and finish it before buying another."
+      },
+      "action": {
+        "label": "Check if this course is worth it",
+        "target": "prompt:P13"
+      }
+    },
+    {
+      "day": 29,
+      "week": 4,
+      "title": "Stress-test the next move",
+      "summary": "Put the direction under pressure before you commit.",
+      "task": "List the three assumptions your next move depends on. For each, write the cheapest test you can run this month.",
+      "tip": "A failed test is cheaper than a failed year.",
+      "persona_tips": {
+        "stuck_employee": "Test one alternative before resigning.",
+        "student": "Test whether the roles you want actually exist locally.",
+        "founder": "Test whether anyone will pay for the smallest version.",
+        "women_career": "Test whether the hours work with your real life.",
+        "beginner_ai_brand": "Test whether the tool you learned is used in real job ads."
+      },
+      "action": {
+        "label": "Plan a pivot or stress-test a venture",
+        "target": "prompt:P14"
+      }
+    },
+    {
+      "day": 30,
+      "week": 4,
+      "title": "Commit to the next 30",
+      "summary": "Make the next month smaller and more specific.",
+      "task": "Choose three actions from this challenge that worked and schedule them for the next 30 days. Write one sentence about what you will stop doing.",
+      "tip": "Progress is a rhythm you can keep, not a sprint you survive.",
+      "persona_tips": {
+        "stuck_employee": "Keep the pay research current once a month.",
+        "student": "Keep one project shipping every month.",
+        "founder": "Keep talking to users every week.",
+        "women_career": "Keep one visible proof artefact updated.",
+        "beginner_ai_brand": "Keep one new AI skill tied to a real task."
+      },
+      "action": {
+        "label": "See what is built and what comes next",
+        "target": "status"
+      }
+    }
+  ]
+}
