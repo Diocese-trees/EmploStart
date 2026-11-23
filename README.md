@@ -170,11 +170,14 @@ tests/                     node:test suites
 
 ### EmploStart identity
 
-The app carries its own lockup in the Emplowise Brand Kit language: a folded
-start-flag mark followed by EMPLOSTART in Montserrat ExtraBold, optically
-condensed and tightly tracked to match the Emplowise wordmark, with `START` in
-Deep Teal (light) or Aqua (dark). It is a sibling of the Emplowise layered
-"E", not a recolour of it.
+The app carries its own lockup in the Emplowise Brand Kit language: the
+Emplowise layered "E" mark — traced to vector from the official raster, since
+the brand kit ships no SVG — followed by EMPLOSTART in the Emplowise wordmark
+cut (Montserrat ExtraBold, optically condensed and tightly tracked). This is
+the one sanctioned recolour of the mark: Deep Teal `#0F766E` on light surfaces
+and Aqua `#5EEAD4` on navy, so EmploStart reads as the Emplowise product family
+while its own accent carries the sub-brand. The wordmark itself stays
+monochrome, Navy on light and White on navy, exactly like Emplowise.
 
 | File | Use |
 | --- | --- |
@@ -184,9 +187,11 @@ Deep Teal (light) or Aqua (dark). It is a sibling of the Emplowise layered
 | `assets/img/logo-emplostart-*-1200.png`, `*-512.png` | Decks, docs and email |
 | `assets/img/favicon.svg`, `favicon.ico`, `favicon.png`, `assets/img/apple-touch-icon.png` | Browser and home-screen icons |
 
-Use the lockup at 120 px or wider (header uses 170 × 32). Do not stretch,
+Use the lockup at 120 px or wider (header uses 157 × 32). Do not stretch,
 recolour, rotate, add shadows or gradients, or place the primary lockup on a
-dark ground; swap to the reverse file instead. The mark stays navy/white.
+dark ground; swap to the reverse file instead. The wordmark stays navy/white;
+only the E carries the Deep Teal/Aqua accent, and only in these EmploStart
+files.
 
 ## Tokens
 

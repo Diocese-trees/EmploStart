@@ -21,8 +21,11 @@ a real product with its own Pages deployment.
   fake browser chrome. No raw `[To Verify]` markers in shipped HTML.
 - The shell uses the EmploStart lockup (`assets/img/logo-emplostart-*.svg`),
   not the Emplowise logo. Light surfaces get the primary file, dark and navy
-  grounds get the reverse file; never recolour, stretch or add effects. The
-  mark is a start-flag sibling of the Emplowise layered "E".
+  grounds get the reverse file; never stretch or add effects. The lockup pairs
+  the Emplowise layered "E" — vector-traced from the official raster and
+  recoloured Deep Teal/Aqua, the one sanctioned sub-brand exception to "never
+  recolour the mark" — with the Emplowise wordmark cut in monochrome
+  Navy/White.
 - The vault is local by default. Nothing is written until the person confirms a
   preview, a parsed value never overwrites a hand-typed one, and session mode
   must clear the persistent copy immediately.
