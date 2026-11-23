@@ -374,13 +374,13 @@
 
     function paintMode() {
         var on = AI && AI.consentGiven && AI.consentGiven();
-        badge.textContent = on ? 'AI · opt-in on' : 'Non-AI · runs locally';
+        badge.textContent = on ? 'AI opt-in on · Local tools still work' : 'Free Local Edition · In active build';
         badge.setAttribute('data-mode', on ? 'ai' : 'local');
         toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
         toggle.textContent = on ? 'Disable AI' : 'Enable AI (opt-in)';
         note.textContent = on
             ? 'AI mode is on. Text you submit may be sent to the AI endpoint; local results still work if it fails.'
-            : 'Non-AI mode: nothing you type leaves this page.';
+            : 'Free Local Edition · In active build (AI mode planned). Nothing you type leaves this page.';
     }
 
     if (AI && AI.available && AI.available()) {

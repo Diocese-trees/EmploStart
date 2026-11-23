@@ -32,6 +32,8 @@
     function renderDiagnostic() {
         var host = els.testQuestions;
         if (!host || !window.EmploStartIntake) { return; }
+        // The guided shell renders one question at a time; leave its card alone.
+        if (host.getAttribute('data-guided') === '1') { return; }
         host.textContent = '';
         window.EmploStartIntake.DIAGNOSTIC.forEach(function (q, index) {
             var body = el('fieldset', 'diagnostic-item');
@@ -226,6 +228,7 @@
         });
         els.mode.value = lib.mode();
         if (window.EmploStartBridge) { window.EmploStartBridge.refresh(); }
+        document.dispatchEvent(new CustomEvent('emplostart:vault-changed'));
     }
 
     function exportVault() {

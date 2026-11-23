@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "greeting": "Hi. I am the local coach. I explain things in plain language, and I only know what you have typed here. Nothing leaves this browser.",
+  "fallback": {
+    "reply": "I did not catch which part you want help with. Pick one of these, or type a keyword like AI, LinkedIn, CV, interview or pay.",
+    "actions": [
+      { "label": "Where do I start?", "target": "start" },
+      { "label": "How to use AI", "target": "topic:ai_basics" },
+      { "label": "LinkedIn and branding", "target": "topic:linkedin_branding" },
+      { "label": "Open the 300-word story", "target": "story" }
+    ]
+  },
+  "topics": [
+    {
+      "id": "start",
+      "title": "Where do I start?",
+      "triggers": ["start", "begin", "lost", "overwhelmed", "first step", "help me", "where do i"],
+      "reply": "Start with one honest paragraph about where you are. The 300-word story takes about ten minutes and everything else fills in from it. If you prefer tap-only, take the twelve-question check instead. Both save to this browser only.",
+      "actions": [
+        { "label": "Write my 300-word story", "target": "story" },
+        { "label": "Take the 12-question check", "target": "quiz" },
+        { "label": "Start Day 1 of the challenge", "target": "challenge:1" }
+      ]
+    },
+    {
+      "id": "ai_basics",
+      "title": "How to use AI without the panic",
+      "triggers": ["ai", "artificial intelligence", "prompt", "chatgpt", "gemini", "claude", "copilot", "llm", "automation"],
+      "reply": "Three steps, every time. First, fill the prompt with your real details, because generic input gives generic output. Second, copy it. Third, paste it into a free tool like Gemini, ChatGPT or Claude, then read the reply and edit anything that sounds like a stranger. AI is a thinking partner, not a ghostwriter. If it invents a number or a job title, delete that line.",
+      "actions": [
+        { "label": "Open the 30-second guide", "target": "guide:ai" },
+        { "label": "Try the beginner prompt P04", "target": "prompt:P04" },
+        { "label": "See what is built now", "target": "status" }
+      ]
+    },
+    {
+      "id": "linkedin_branding",
+      "title": "LinkedIn and personal branding, without cringe",
+      "triggers": ["linkedin", "personal brand", "branding", "profile", "headline", "network", "post", "self-promotion", "visibility"],
+      "reply": "A personal brand is just three sentences a stranger can repeat: what you do, who you do it for, and the proof you have. On LinkedIn that means a clear headline, a three-line About, and one specific recent item in Experience. You do not need to post daily. One useful comment a week beats ten motivational posts.",
+      "actions": [
+        { "label": "Open the Profile Builder", "target": "tool:profile" },
+        { "label": "Run the LinkedIn prompt P04", "target": "prompt:P04" },
+        { "label": "See Week 3 of the challenge", "target": "challenge:15" }
+      ]
+    },
+    {
+      "id": "stuck_job",
+      "title": "Stuck, underpaid or done with the job",
+      "triggers": ["stuck", "hate my job", "underpaid", "salary", "pay", "resign", "quit", "toxic", "burnout", "burned out", "bored"],
+      "reply": "Do not resign on a bad week. First make the case: list three things you delivered that a stranger could verify, then check what the role actually pays where you live using published ranges, not guesswork. If the gap is real, either the current employer corrects it or the market does. The planner turns that into a staged move instead of a leap.",
+      "actions": [
+        { "label": "Build a staged pivot plan", "target": "tool:pivot" },
+        { "label": "Check market and fair-wage readiness", "target": "tool:market" },
+        { "label": "Run the negotiation prompt P12", "target": "prompt:P12" }
+      ]
+    },
+    {
+      "id": "student_proof",
+      "title": "Student with no formal experience",
+      "triggers": ["student", "graduate", "fresh grad", "no experience", "first job", "internship", "university", "college"],
+      "reply": "You already have proof, just not with a job title. Coursework, a group project you fixed, a small site, an event you ran, a spreadsheet that saved someone an hour. Write two of those as situation, action, result, with real numbers only if they are true. That is what an entry-level interviewer is testing for.",
+      "actions": [
+        { "label": "Rewrite your profile", "target": "tool:profile" },
+        { "label": "Run the proof prompt P06", "target": "prompt:P06" },
+        { "label": "Practise interview answers", "target": "tool:interview" }
+      ]
+    },
+    {
+      "id": "women_return",
+      "title": "Returning after a break, or seeking safer work",
+      "triggers": ["returning", "career break", "career gap", "maternity", "mother", "woman", "women", "re-enter", "reenter", "flexible", "remote", "safe"],
+      "reply": "A gap is a fact, not a confession. Say what you kept doing, paid or not: caregiving logistics, freelance work, volunteering, study. Then show one current proof item so the gap stops being the headline. For flexibility, filter for the work arrangement before the title, and ask about hours and location in the first call, not the last.",
+      "actions": [
+        { "label": "Write the gap honestly in your story", "target": "story" },
+        { "label": "Run the gap-framing prompt P05", "target": "prompt:P05" },
+        { "label": "Open the Profile Builder", "target": "tool:profile" }
+      ]
+    },
+    {
+      "id": "founder_pivot",
+      "title": "Founder testing an idea, or pivoting",
+      "triggers": ["founder", "startup", "idea", "pivot", "validate", "customer", "business", "co-founder", "launch"],
+      "reply": "Test the problem before the product. Write the customer problem in one sentence a stranger would repeat, then name the last three people who described that problem without being prompted. If you cannot name three, the next step is conversations, not features. Position the venture on the evidence, not on the pitch deck.",
+      "actions": [
+        { "label": "Map directions worth testing", "target": "tool:reimagine" },
+        { "label": "Run the positioning prompt P13", "target": "prompt:P13" },
+        { "label": "Run the market prompt P09", "target": "prompt:P09" }
+      ]
+    },
+    {
+      "id": "cv_ats",
+      "title": "CV, ATS and getting shortlisted",
+      "triggers": ["cv", "resume", "ats", "shortlist", "application", "keyword", "rejected", "no reply", "cover letter"],
+      "reply": "Match the language, not the fantasy. Paste the job description and your CV into the local ATS check: it shows which real keywords you already cover and which you could add only if they are true. Then cut one line that says nothing measurable. Most rejections here are vocabulary and structure, not talent.",
+      "actions": [
+        { "label": "Run the local ATS check", "target": "tool:ats" },
+        { "label": "Run the CV prompt P05", "target": "prompt:P05" },
+        { "label": "Diagnose a rejection with P09", "target": "prompt:P09" }
+      ]
+    },
+    {
+      "id": "interview",
+      "title": "Interviews and rehearsing answers",
+      "triggers": ["interview", "question", "answer", "nervous", "panel", "practice", "story", "star"],
+      "reply": "Answer in three beats: the situation in one line, what you personally did, and the result. Rehearse out loud, not in your head. The practice tool gives questions for your level and scores your answer against a rubric, so you can see the missing result before an interviewer does.",
+      "actions": [
+        { "label": "Practise with real questions", "target": "tool:interview" },
+        { "label": "Run the interview prompt P11", "target": "prompt:P11" },
+        { "label": "See Week 4 of the challenge", "target": "challenge:22" }
+      ]
+    },
+    {
+      "id": "fair_pay",
+      "title": "Pay, offers and negotiation",
+      "triggers": ["salary", "offer", "negotiate", "negotiation", "raise", "pay", "compensation", "range"],
+      "reply": "Never name a number first unless you have to. Collect two published ranges for the same role, city and level, then anchor inside the range using your evidence. EmploStart will not invent a figure for you, because a made-up number is worse than a researched blank.",
+      "actions": [
+        { "label": "Run the offer prompt P12", "target": "prompt:P12" },
+        { "label": "Check fair-wage readiness", "target": "tool:market" },
+        { "label": "Read the pledge", "target": "pledge" }
+      ]
+    },
+    {
+      "id": "privacy",
+      "title": "What leaves this browser?",
+      "triggers": ["privacy", "safe", "data", "upload", "server", "storage", "delete", "wipe", "shared pc", "shared computer"],
+      "reply": "In local mode, nothing leaves this page. Your vault lives in this browser, and on a shared computer you can switch to session-only mode so it wipes when the tab closes. AI is opt-in, off by default, and asks for consent before any single request. You can wipe everything from the vault panel at any time.",
+      "actions": [
+        { "label": "Open vault controls", "target": "vault" },
+        { "label": "See what is built now", "target": "status" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+/* EmploStart theme layer.
+   Light is the default palette from tokens.css. Dark is Midnight Navy, applied
+   by <html data-theme="dark"> before first paint. Components never hardcode a
+   background: they read the shared surface ladder, which this file re-points. */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --d-page: #050f26;
+  --d-surface: #08182f;
+  --d-surface-2: #0a1d38;
+  --d-surface-3: #0e2444;
+  --d-ink: #e9eff8;
+  --d-ink-soft: #a9b8cc;
+  --d-ink-dim: #7f8fa6;
+  --d-line: rgba(148, 163, 184, 0.16);
+  --d-line-strong: rgba(148, 163, 184, 0.3);
+  --d-accent: #5eead4;
+
+  --line: var(--d-line);
+  --line-strong: var(--d-line-strong);
+  --surface: var(--d-surface);
+  --surface-2: var(--d-surface-2);
+  --surface-3: var(--d-surface-3);
+  --surface-canvas: var(--d-page);
+  --surface-card: var(--d-surface);
+  --surface-elevated: var(--d-surface-3);
+  --border-subtle: var(--d-line);
+  --ink-primary: var(--d-ink);
+  --ink-muted: var(--d-ink-soft);
+  --ice: var(--d-surface-2);
+  --offwhite: var(--d-surface);
+  --sand: var(--d-surface-2);
+  --sand-line: var(--d-line);
+  --glass: rgba(8, 24, 47, 0.82);
+
+  --slate: var(--d-ink);
+  --slate-700: #cfd9e6;
+  --slate-600: var(--d-ink-soft);
+  --slate-500: #9aa9bd;
+  --slate-400: var(--d-ink-dim);
+  --slate-300: #5b6b80;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 10px 30px -14px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 0 24px 60px -28px rgba(0, 0, 0, 0.9);
+}
+
+html[data-theme="dark"] body {
+  background: var(--d-page);
+  color: var(--d-ink);
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4 { color: #f2f7fd; }
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] li { color: var(--d-ink-soft); }
+html[data-theme="dark"] strong { color: #f7fbff; }
+
+html[data-theme="dark"] a { color: var(--d-accent); }
+html[data-theme="dark"] a:hover { color: #a7f3e6; }
+
+html[data-theme="dark"] ::selection { background: rgba(94, 234, 212, 0.3); color: #04121f; }
+html[data-theme="dark"] :focus-visible { outline-color: var(--d-accent); }
+
+/* ---------------------------------------------------------------- chrome */
+
+html[data-theme="dark"] .site-header {
+  background: rgba(5, 15, 38, 0.92);
+  border-bottom-color: var(--d-line);
+  box-shadow: 0 1px 0 rgba(148, 163, 184, 0.08);
+}
+html[data-theme="dark"] .header-link { color: var(--d-ink-soft); }
+html[data-theme="dark"] .header-link:hover { color: #ffffff; }
+
+html[data-theme="dark"] .status-pill {
+  background: rgba(94, 234, 212, 0.12);
+  border-color: rgba(94, 234, 212, 0.35);
+  color: #a7f3e6;
+}
+
+html[data-theme="dark"] .theme-toggle,
+html[data-theme="dark"] .privacy-toggle,
+html[data-theme="dark"] .coach-launch {
+  background: var(--d-surface-2);
+  border-color: var(--d-line-strong);
+  color: var(--d-ink);
+}
+html[data-theme="dark"] .theme-toggle:hover,
+html[data-theme="dark"] .privacy-toggle:hover,
+html[data-theme="dark"] .coach-launch:hover { background: var(--d-surface-3); }
+
+html[data-theme="dark"] .privacy-toggle[aria-pressed="true"] {
+  background: rgba(94, 234, 212, 0.16);
+  border-color: rgba(94, 234, 212, 0.45);
+  color: #a7f3e6;
+}
+
+/* ---------------------------------------------------------------- shell */
+
+html[data-theme="dark"] .stepper {
+  background: var(--d-surface);
+  border-color: var(--d-line);
+}
+html[data-theme="dark"] .step-button { color: var(--d-ink-soft); }
+html[data-theme="dark"] .step-button:hover { background: var(--d-surface-2); color: var(--d-ink); }
+html[data-theme="dark"] .step-button[aria-current="step"] {
+  background: var(--d-accent);
+  border-color: var(--d-accent);
+  color: #04121f;
+}
+html[data-theme="dark"] .step-index { background: var(--d-surface-2); border-color: var(--d-line-strong); color: var(--d-ink); }
+html[data-theme="dark"] .step-button[aria-current="step"] .step-index { background: rgba(4, 18, 31, 0.16); border-color: transparent; color: #04121f; }
+
+html[data-theme="dark"] .hero-note,
+html[data-theme="dark"] .build-note {
+  background: rgba(94, 234, 212, 0.1);
+  border-color: rgba(94, 234, 212, 0.3);
+  color: #a7f3e6;
+}
+
+/* ---------------------------------------------------------------- cards */
+
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .persona-card,
+html[data-theme="dark"] .path-card,
+html[data-theme="dark"] .story-studio,
+html[data-theme="dark"] .dashboard-card,
+html[data-theme="dark"] .coach-panel,
+html[data-theme="dark"] .prompt-list li,
+html[data-theme="dark"] .library-track {
+  background: var(--d-surface);
+  border-color: var(--d-line);
+  color: var(--d-ink);
+}
+
+html[data-theme="dark"] .card .card,
+html[data-theme="dark"] .panel .card,
+html[data-theme="dark"] .story-guide,
+html[data-theme="dark"] .coach-bubble--bot,
+html[data-theme="dark"] .context-bar,
+html[data-theme="dark"] .delta,
+html[data-theme="dark"] .diagnostic-item,
+html[data-theme="dark"] .workbench-output,
+html[data-theme="dark"] .mcq-card,
+html[data-theme="dark"] .snapshot-row {
+  background: var(--d-surface-2);
+  border-color: var(--d-line);
+  color: var(--d-ink);
+}
+
+html[data-theme="dark"] .persona-card:hover,
+html[data-theme="dark"] .path-card:hover,
+html[data-theme="dark"] .persona-card.is-selected,
+html[data-theme="dark"] .path-card.is-active {
+  border-color: var(--teal);
+  background: var(--d-surface-3);
+}
+html[data-theme="dark"] .persona-card.is-selected { box-shadow: inset 0 0 0 1px var(--teal); }
+
+html[data-theme="dark"] .path-card-title,
+html[data-theme="dark"] .persona-short { color: var(--aqua); }
+html[data-theme="dark"] .persona-title,
+html[data-theme="dark"] .library-card-title,
+html[data-theme="dark"] .dashboard-card h3 { color: #f2f7fd; }
+
+/* ---------------------------------------------------------------- forms */
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+  background: var(--d-page);
+  color: var(--d-ink);
+  border-color: var(--d-line-strong);
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder { color: var(--d-ink-dim); }
+html[data-theme="dark"] .grid label,
+html[data-theme="dark"] .workbench-label,
+html[data-theme="dark"] .workbench-field,
+html[data-theme="dark"] .context-bar label,
+html[data-theme="dark"] .diagnostic-item legend,
+html[data-theme="dark"] .story-label { color: var(--d-ink-soft); }
+
+html[data-theme="dark"] .btn--ghost {
+  background: transparent;
+  border-color: var(--d-line-strong);
+  color: var(--d-ink);
+}
+html[data-theme="dark"] .btn--ghost:hover { background: var(--d-surface-2); }
+html[data-theme="dark"] .btn--teal { background: var(--teal-deep); color: #ffffff; }
+html[data-theme="dark"] .btn--teal:hover { background: var(--teal); }
+
+/* ---------------------------------------------------------------- pills */
+
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .library-pill,
+html[data-theme="dark"] .library-card-button,
+html[data-theme="dark"] .story-chip,
+html[data-theme="dark"] .tag,
+html[data-theme="dark"] .pill,
+html[data-theme="dark"] .band-label,
+html[data-theme="dark"] .vault-band strong {
+  background: var(--d-surface-2);
+  border-color: var(--d-line-strong);
+  color: #cdeee9;
+}
+html[data-theme="dark"] .chip:hover,
+html[data-theme="dark"] .library-pill:hover,
+html[data-theme="dark"] .library-card-button:hover,
+html[data-theme="dark"] .library-card-button.is-active {
+  background: var(--d-surface-3);
+  border-color: var(--teal);
+}
+html[data-theme="dark"] .chip.is-active,
+html[data-theme="dark"] .library-pill.is-active {
+  background: var(--teal-deep);
+  border-color: var(--teal-deep);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .band-foundation { background: #0b1f3a; color: #dbe7f5; border-color: #33527a; }
+html[data-theme="dark"] .band-developing { background: var(--d-surface-2); color: #a7f3e6; }
+html[data-theme="dark"] .band-competitive { background: var(--aqua); color: #04121f; border-color: var(--aqua); }
+html[data-theme="dark"] .band-evidence-backed { background: var(--aqua); color: #04121f; border-color: var(--aqua); }
+
+html[data-theme="dark"] .preview-row,
+html[data-theme="dark"] .band-row,
+html[data-theme="dark"] .vault-band { border-color: var(--d-line); }
+html[data-theme="dark"] .preview-key,
+html[data-theme="dark"] .band-name,
+html[data-theme="dark"] .panel-hint,
+html[data-theme="dark"] .library-card-summary,
+html[data-theme="dark"] .library-card-stage,
+html[data-theme="dark"] .library-track-head,
+html[data-theme="dark"] .disclaimer,
+html[data-theme="dark"] .site-footer { color: var(--d-ink-soft); }
+
+html[data-theme="dark"] .bar { background: rgba(148, 163, 184, 0.2); }
+html[data-theme="dark"] .metric b { color: var(--aqua); }
+
+/* ---------------------------------------------------------------- coach */
+
+html[data-theme="dark"] .coach-panel { background: var(--d-surface); border-color: var(--d-line); }
+html[data-theme="dark"] .coach-head { border-bottom-color: var(--d-line); }
+html[data-theme="dark"] .coach-bubble--user { background: var(--teal-deep); color: #ffffff; }
+html[data-theme="dark"] .coach-bubble--bot { color: var(--d-ink); }
+html[data-theme="dark"] .coach-suggestions button {
+  background: var(--d-surface-2);
+  border-color: var(--d-line-strong);
+  color: var(--d-ink);
+}
+html[data-theme="dark"] .coach-form input { background: var(--d-surface-2); }
+html[data-theme="dark"] .coach-badge { background: rgba(94, 234, 212, 0.14); color: #a7f3e6; border-color: rgba(94, 234, 212, 0.3); }
+
+/* ---------------------------------------------------------------- story */
+
+html[data-theme="dark"] .story-meter { color: var(--d-ink-soft); }
+html[data-theme="dark"] .story-meter.is-good { color: #a7f3e6; }
+html[data-theme="dark"] .story-meter.is-over { color: #fcd34d; }
+html[data-theme="dark"] .story-summary { background: var(--d-surface-2); border-color: var(--d-line); }
+html[data-theme="dark"] .story-summary strong { color: #f7fbff; }
+
+/* ---------------------------------------------------------------- footer */
+
+html[data-theme="dark"] .pledge { background: #061a33; color: #c9d8ea; }
+html[data-theme="dark"] .pledge h2 { color: #ffffff; }
+html[data-theme="dark"] .pledge a { color: var(--aqua); }
+html[data-theme="dark"] .site-footer { background: var(--d-surface); border-top-color: var(--d-line); }
+
+html[data-theme="dark"] dialog { background: var(--d-surface-3); color: var(--d-ink); }
+html[data-theme="dark"] dialog::backdrop { background: rgba(2, 8, 20, 0.72); }
+
+html[data-theme="dark"] .skip:focus { background: var(--d-surface-3); color: var(--d-ink); }
+
+html[data-theme="dark"] .logo-light { display: none; }
+html[data-theme="dark"] .logo-dark { display: inline-block; }

@@ -3,11 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EmploStart — six career tools, 14 prompts, one private vault | Emplowise</title>
-<meta name="description" content="Six free career tools plus a 14-prompt EMPLOWISE x START employability library and one private candidate vault. Three intake lanes: a diagnostic, a LinkedIn paste, or a CV upload. Runs locally by default; AI is opt-in.">
+<script>(function(){var r=document.documentElement,k='emplowise:theme',s=null,t;try{s=window.localStorage.getItem(k)}catch(e){}t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');if(t==='dark')r.setAttribute('data-theme','dark');if(t==='dark'){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content','#050F26')}})();</script>
+<title>EmploStart — a free, self-guided career app | Emplowise</title>
+<meta name="description" content="EmploStart is a free, self-guided career app: a 300-word story studio, a guided check, a local coach, six tools and the 14-prompt EMPLOWISE x START library. Everything runs in your browser; AI is optional.">
+<meta name="theme-color" content="#081B3E">
 <meta name="emplostart-ai-endpoint" content="">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23081B3E'/%3E%3Ctext x='16' y='22' font-family='Montserrat,Arial' font-size='18' font-weight='800' fill='%235EEAD4' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="assets/img/logo-mark.png">
 <link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -15,188 +21,298 @@
 
 <header class="site-header">
   <a class="brand" href="#main" aria-label="EmploStart home">
-    <span class="brand-mark" aria-hidden="true">E</span>
-    <span class="brand-name">EmploStart</span>
+    <img class="logo logo-light" src="assets/img/logo-primary-250.webp" srcset="assets/img/logo-primary-250.webp 250w, assets/img/logo-primary-375.png 375w" sizes="140px" width="125" height="32" alt="Emplowise">
+    <img class="logo logo-dark" src="assets/img/logo-reverse-204.webp" srcset="assets/img/logo-reverse-204.webp 204w, assets/img/logo-reverse-375.png 375w" sizes="140px" width="125" height="32" alt="Emplowise">
+    <span class="brand-divider" aria-hidden="true"></span>
+    <span class="brand-app">EmploStart</span>
   </a>
   <div class="header-actions">
-    <span class="mode-badge" id="mode-badge" data-mode="local">Non-AI · runs locally</span>
+    <span class="status-pill" id="mode-badge" data-mode="local">Free Local Edition · In active build</span>
     <button type="button" class="btn btn--ghost btn--sm" id="ai-toggle" aria-pressed="false">Enable AI (opt-in)</button>
+    <button type="button" class="theme-toggle" data-theme-toggle data-label-dark="Switch to dark mode" data-label-light="Switch to light mode" aria-pressed="false">
+      <span aria-hidden="true">◐</span><span data-theme-text>Dark</span>
+    </button>
+    <button type="button" class="privacy-toggle" id="privacy-toggle" aria-pressed="false" title="Store nothing after this tab closes">Shared PC</button>
+    <button type="button" class="coach-launch" id="coach-launch" aria-expanded="false" aria-controls="coach">Live coach</button>
+    <a class="header-link" href="https://diocese-trees.github.io/Emplowise-Website-Phase-I/" target="_blank" rel="noopener">Emplowise.com</a>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero">
-    <p class="kicker">Free career utility</p>
-    <h1>Six career tools, 14 prompts, one private vault.</h1>
-    <p class="lede">Plan a pivot, test a new direction, check fair-wage readiness, score a resume against a job description, practise an interview, and tighten your profile. The 14-prompt library adds shortlisting, interview, offer and pivot prompts. Everything runs in your browser by default; AI is optional and only with your consent.</p>
-    <p class="hero-note" id="mode-note">Non-AI mode: nothing you type leaves this page.</p>
-  </section>
-
-  <section class="intake" id="intake">
-    <div class="shell">
-      <p class="kicker">Start here</p>
-      <h2>Three lanes into one local vault.</h2>
-      <p class="lede">Answer a short diagnostic, paste a LinkedIn profile, or bring a CV. Everything is read in your browser, and nothing is saved until you approve the preview.</p>
-      <div class="intake-grid">
-        <form class="card lane" id="lane-test-form">
-          <h3>1 &middot; Diagnostic test</h3>
-          <p class="panel-hint">Twelve questions, about two to three minutes. You get four readiness bands, never a fake score out of 100.</p>
-          <div id="lane-test-questions" class="diagnostic-list"></div>
-          <div class="actions"><button class="btn btn--teal" type="submit">Save my bands</button></div>
-          <div id="lane-test-result" class="lane-result" aria-live="polite"></div>
-        </form>
-        <form class="card lane" id="lane-linkedin-form">
-          <h3>2 &middot; LinkedIn profile</h3>
-          <p class="panel-hint">We never open or scrape LinkedIn. Paste the About and Experience text you want used, and the gaps become questions.</p>
-          <label>Profile URL<input id="lane-linkedin-url" type="url" placeholder="https://linkedin.com/in/your-name" autocomplete="off"></label>
-          <label>Pasted profile text<textarea id="lane-linkedin-text" rows="4" placeholder="Paste About and Experience here"></textarea></label>
-          <div class="actions"><button class="btn btn--teal" type="submit">Preview and fill gaps</button></div>
-        </form>
-        <form class="card lane" id="lane-cv-form">
-          <h3>3 &middot; CV upload or PDF paste</h3>
-          <p class="panel-hint">.docx, .txt, or .md read locally. Pasted PDF text gets its broken line wraps and bullet glyphs repaired first.</p>
-          <label>CV file<input id="lane-cv-file" type="file" accept=".docx,.txt,.md,text/plain"></label>
-          <label>Or paste the text<textarea id="lane-cv-text" rows="5" placeholder="Paste the CV as plain text"></textarea></label>
-          <div class="actions">
-            <button class="btn btn--ghost" type="button" id="lane-cv-repair">Repair paste</button>
-            <button class="btn btn--teal" type="submit">Preview and fill gaps</button>
-          </div>
-        </form>
-      </div>
-      <div class="card preview" id="intake-preview" hidden>
-        <h3>Parse preview</h3>
-        <p class="panel-hint" id="preview-note"></p>
-        <div id="preview-table" class="preview-table"></div>
-        <div id="delta-questions" class="delta"></div>
-        <div class="actions">
-          <button class="btn btn--teal" type="button" id="preview-save">Save to vault</button>
-          <button class="btn btn--ghost" type="button" id="preview-cancel">Cancel</button>
-        </div>
-      </div>
-      <div class="card vault" aria-labelledby="vault-heading">
-        <div class="vault-head">
-          <h3 id="vault-heading">Your local vault</h3>
-          <p class="vault-completeness" id="vault-completeness">0% complete</p>
-        </div>
-        <div id="vault-bands" class="vault-bands"></div>
-        <div class="vault-controls">
-          <label>Storage<select id="vault-mode"><option value="persistent">This browser (persists)</option><option value="session">Shared or lab PC (wipes on close)</option></select></label>
-          <div class="actions">
-            <button type="button" class="btn btn--ghost btn--sm" id="vault-sample">Load sample</button>
-            <button type="button" class="btn btn--ghost btn--sm" id="vault-export">Export JSON</button>
-            <label class="btn btn--ghost btn--sm file-btn">Import JSON<input type="file" id="vault-import" accept="application/json,.json" hidden></label>
-            <button type="button" class="btn btn--ghost btn--sm" id="vault-wipe">Wipe local data</button>
-          </div>
-        </div>
-        <p class="panel-hint" id="vault-note" aria-live="polite">Nothing leaves this browser unless you turn on AI mode for one request.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="context-bar" id="context-bar" aria-label="Target context">
-    <label for="engine-context">Target context</label>
-    <select id="engine-context"></select>
-    <label class="sync-toggle"><input type="checkbox" id="engine-sync"> Sync edits back to Vault</label>
-    <span class="panel-hint" id="engine-bridge-note" aria-live="polite">Forms fill from your vault. Sync is off by default.</span>
-  </section>
-
-  <nav class="module-nav" aria-label="Career modules">
-    <button type="button" class="module-tab is-active" id="tab-pivot" data-panel="pivot" aria-selected="true">01 · Pivot Planner</button>
-    <button type="button" class="module-tab" id="tab-reimagine" data-panel="reimagine" aria-selected="false">02 · Reimagine Lab</button>
-    <button type="button" class="module-tab" id="tab-market" data-panel="market" aria-selected="false">03 · Market &amp; Fair Wage</button>
-    <button type="button" class="module-tab" id="tab-ats" data-panel="ats" aria-selected="false">04 · ATS Analyzer</button>
-    <button type="button" class="module-tab" id="tab-interview" data-panel="interview" aria-selected="false">05 · Interview Prep</button>
-    <button type="button" class="module-tab" id="tab-profile" data-panel="profile" aria-selected="false">06 · Profile Builder</button>
+  <nav class="stepper" aria-label="Your progress">
+    <button type="button" class="step-button" data-step="start" aria-current="step"><span class="step-index">1</span><span>Start &amp; persona</span></button>
+    <button type="button" class="step-button" data-step="profile"><span class="step-index">2</span><span>Your profile, 3 ways</span></button>
+    <button type="button" class="step-button" data-step="tools"><span class="step-index">3</span><span>Tools &amp; 14 prompts</span></button>
   </nav>
 
-  <section class="panel" id="panel-pivot" role="tabpanel" aria-labelledby="tab-pivot">
-    <h2>Career Pivot Planner</h2>
-    <p class="panel-note">Turn where you are into a staged plan you can check yourself. No salaries, no promises.</p>
-    <form class="grid" data-module="pivot">
-      <label>Current role or field<input name="current" placeholder="Operations lead" autocomplete="off"></label>
-      <label>Target direction<input name="target" placeholder="Product management" autocomplete="off"></label>
-      <label class="wide">Transferable skills<textarea name="skills" rows="2" placeholder="budgeting, coaching, process design, vendor management"></textarea></label>
-      <label class="wide">Strengths<textarea name="strengths" rows="2" placeholder="calm under pressure, clear writing, turning messy requests into plans"></textarea></label>
-      <label>Hours per week<input name="hoursPerWeek" type="number" min="1" max="40" value="6"></label>
-      <label>Runway<select name="runway"><option value="explore">Exploring</option><option value="transition" selected>Transitioning</option><option value="urgent">Urgent</option></select></label>
-      <label>Risk appetite<select name="risk"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label>
-      <label>Network<select name="network"><option value="none">None yet</option><option value="some" selected>Some contacts</option><option value="strong">Strong</option></select></label>
-      <div class="actions wide"><button type="submit" class="btn btn--teal">Build my plan</button></div>
-    </form>
-    <div class="result" id="result-pivot" aria-live="polite"></div>
-  </section>
+  <section class="view" id="view-start" data-view="start">
+    <div class="hero">
+      <p class="kicker">EMPLOWISE × START</p>
+      <h1>A calmer way to work out what comes next.</h1>
+      <p class="lede">No forms to survive. Pick who you are today, then choose one of three ways in: drop what you already have, answer a short guided check, or write 300 honest words. Your vault stays in this browser.</p>
+      <p class="build-note" id="mode-note">Free Local Edition · In active build (AI mode planned). Nothing you type leaves this page.</p>
+    </div>
 
-  <section class="panel" id="panel-reimagine" role="tabpanel" aria-labelledby="tab-reimagine" hidden>
-    <h2>Career Reimagination Lab</h2>
-    <p class="panel-note">Map your strengths and interests onto directions worth testing. These are prompts, not promises.</p>
-    <form class="grid" data-module="reimagine">
-      <label>Current role<input name="current" placeholder="Teacher" autocomplete="off"></label>
-      <label>Work style<select name="workStyle"><option value="">Not sure</option><option value="builder">Builder</option><option value="analyst">Analyst</option><option value="people">People</option><option value="operator">Operator</option><option value="communicator">Communicator</option><option value="advisor">Advisor</option></select></label>
-      <label class="wide">Strengths<textarea name="strengths" rows="2" placeholder="explaining hard ideas, planning, patience"></textarea></label>
-      <label class="wide">Interests<textarea name="interests" rows="2" placeholder="education, community, writing"></textarea></label>
-      <label class="wide">Constraints<textarea name="constraints" rows="2" placeholder="cannot relocate, evenings only"></textarea></label>
-      <div class="actions wide"><button type="submit" class="btn btn--teal">Show my matches</button></div>
-    </form>
-    <div class="result" id="result-reimagine" aria-live="polite"></div>
-  </section>
-
-  <section class="panel" id="panel-market" role="tabpanel" aria-labelledby="tab-market" hidden>
-    <h2>Market Assessment &amp; Fair-Wage Readiness</h2>
-    <p class="panel-note">Score how ready you are to check a market and a fair wage. We never invent pay figures; we give you the research plan.</p>
-    <form class="grid" data-module="market">
-      <label>Target role<input name="role" placeholder="Data analyst" autocomplete="off"></label>
-      <label>Region or city<input name="region" placeholder="Lahore" autocomplete="off"></label>
-      <label>Experience<input name="years" placeholder="3 years" autocomplete="off"></label>
-      <label>Employers publish ranges?<select name="transparency"><option value="yes">Usually yes</option><option value="partial" selected>Sometimes</option><option value="no">Usually no</option></select></label>
-      <div class="actions wide"><button type="submit" class="btn btn--teal">Assess readiness</button></div>
-    </form>
-    <div class="result" id="result-market" aria-live="polite"></div>
-  </section>
-
-  <section class="panel" id="panel-ats" role="tabpanel" aria-labelledby="tab-ats" hidden>
-    <h2>ATS Resume Analyzer</h2>
-    <p class="panel-note">Score a resume against one job description, then fix the gaps. Deterministic and private.</p>
-    <form class="grid" data-module="ats">
-      <label class="wide">Resume text<textarea name="resume" rows="7" placeholder="Paste the resume as plain text"></textarea></label>
-      <label class="wide">Job description<textarea name="jd" rows="5" placeholder="Paste the job description"></textarea></label>
-      <div class="actions wide"><button type="submit" class="btn btn--teal">Score my resume</button></div>
-    </form>
-    <div class="result" id="result-ats" aria-live="polite"></div>
-  </section>
-
-  <section class="panel" id="panel-interview" role="tabpanel" aria-labelledby="tab-interview" hidden>
-    <h2>Interview Prep</h2>
-    <p class="panel-note">Get practice questions for a role, then score an answer against a clear rubric.</p>
-    <form class="grid" data-module="interview">
-      <label>Role<input name="role" placeholder="Product manager" autocomplete="off"></label>
-      <label>Level<select name="level"><option>Internship</option><option>Entry level</option><option selected>1 to 3 years</option><option>Career switch</option></select></label>
-      <div class="actions wide"><button type="submit" class="btn btn--teal">Get questions</button></div>
-    </form>
-    <div class="result" id="result-interview" aria-live="polite"></div>
-  </section>
-
-  <section class="panel" id="panel-profile" role="tabpanel" aria-labelledby="tab-profile" hidden>
-    <h2>Profile Builder</h2>
-    <p class="panel-note">Rewrite a headline, summary and bullets, then browse 14 copy-paste prompts.</p>
-    <form class="grid" data-module="profile">
-      <label class="wide">Headline<input name="headline" placeholder="Operations lead moving into product management" autocomplete="off"></label>
-      <label class="wide">Summary<textarea name="summary" rows="3" placeholder="I am a hardworking operations lead passionate about product."></textarea></label>
-      <label class="wide">Bullets (one per line)<textarea name="bullets" rows="4" placeholder="Ran the weekly supply plan&#10;Trained 6 new hires&#10;Cut report time from 2 days to 4 hours"></textarea></label>
-      <label>Target role<input name="targetRole" placeholder="Product manager" autocomplete="off"></label>
-      <div class="actions wide"><button type="submit" class="btn btn--teal">Rewrite my profile</button></div>
-    </form>
-    <div class="result" id="result-profile" aria-live="polite"></div>
-    <div class="prompts">
-      <div class="prompts-head">
-        <h3>14 ready prompts</h3>
-        <input type="search" id="prompt-search" placeholder="Search prompts by task or keyword" aria-label="Search prompts">
-      </div>
-      <ul class="prompt-list" id="prompt-list"></ul>
+    <h2 class="section-title">Who are you today?</h2>
+    <p class="panel-hint">One tap. It changes the tone of the check, the coach tips and the challenge tasks. You can change it later.</p>
+    <div class="persona-grid" id="persona-grid" role="group" aria-label="Choose who you are today"></div>
+    <div class="start-actions">
+      <button type="button" class="btn btn--teal" id="persona-continue" disabled>Continue</button>
+      <button type="button" class="btn btn--ghost" id="persona-skip">Skip, just explore</button>
+      <span class="panel-hint" id="persona-note" aria-live="polite"></span>
     </div>
   </section>
-  <section class="library" id="library">
-    <div class="shell">
-      <p class="kicker">EMPLOWISE &times; START</p>
+
+  <section class="view" id="view-profile" data-view="profile" hidden>
+    <div class="view-head">
+      <p class="kicker">Step 2</p>
+      <h2>Three ways in. Pick one, not all three.</h2>
+      <p class="lede">Every path writes to the same private vault, and a hand-typed value always wins over a parsed one.</p>
+    </div>
+
+    <div class="paths">
+      <article class="path-card" data-path="data">
+        <p class="path-kicker">Path A</p>
+        <h3 class="path-card-title">Drop your data</h3>
+        <p>A .docx, .txt or .md CV, a LinkedIn paste, or four quick bullets. Read in this browser, then shown as an editable preview before anything is saved.</p>
+        <button type="button" class="btn btn--teal path-open" data-open="path-data" aria-expanded="false" aria-controls="path-data">Open the drop zone</button>
+        <div class="path-body" id="path-data" hidden>
+          <details class="lane" open>
+            <summary>CV file or pasted text</summary>
+            <form id="lane-cv-form">
+              <label>CV file (.docx, .txt, .md, read locally)<input id="lane-cv-file" type="file" accept=".docx,.txt,.md,text/plain"></label>
+              <label>Or paste the CV or PDF text<textarea id="lane-cv-text" rows="5" placeholder="Paste the CV as plain text"></textarea></label>
+              <div class="actions">
+                <button class="btn btn--ghost" type="button" id="lane-cv-repair">Repair paste</button>
+                <button class="btn btn--teal" type="submit">Preview and fill gaps</button>
+              </div>
+            </form>
+          </details>
+          <details class="lane">
+            <summary>LinkedIn text paste</summary>
+            <form id="lane-linkedin-form">
+              <p class="panel-hint">We never open or scrape LinkedIn. Paste the About and Experience text you want used.</p>
+              <label>Profile URL (optional)<input id="lane-linkedin-url" type="url" placeholder="https://linkedin.com/in/your-name" autocomplete="off"></label>
+              <label>Pasted profile text<textarea id="lane-linkedin-text" rows="4" placeholder="Paste About and Experience here"></textarea></label>
+              <div class="actions"><button class="btn btn--teal" type="submit">Preview and fill gaps</button></div>
+            </form>
+          </details>
+          <div class="card preview" id="intake-preview" hidden>
+            <h3>Parse preview</h3>
+            <p class="panel-hint" id="preview-note"></p>
+            <div id="preview-table" class="preview-table"></div>
+            <div id="delta-questions" class="delta"></div>
+            <div class="actions">
+              <button class="btn btn--teal" type="button" id="preview-save">Save to vault</button>
+              <button class="btn btn--ghost" type="button" id="preview-cancel">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="path-card" data-path="quiz">
+        <p class="path-kicker">Path B</p>
+        <h3 class="path-card-title">Guided check + live coach</h3>
+        <p>Twelve taps, one card at a time. Each answer comes with a plain-English note, and the coach explains any word you have never had to use before.</p>
+        <button type="button" class="btn btn--teal path-open" data-open="path-quiz" aria-expanded="false" aria-controls="path-quiz">Start the 12 taps</button>
+        <div class="path-body" id="path-quiz" hidden>
+          <form id="lane-test-form">
+            <div class="mcq" id="lane-test-questions" data-guided="1"></div>
+            <div id="lane-test-result" class="lane-result" aria-live="polite"></div>
+          </form>
+          <p class="panel-hint">Not sure about a word? <button type="button" class="link-button" id="quiz-coach">Ask the local coach</button> — it answers offline.</p>
+        </div>
+      </article>
+
+      <article class="path-card" data-path="story">
+        <p class="path-kicker">Path C</p>
+        <h3 class="path-card-title">Tell your story in 300 words</h3>
+        <p>Three gentle prompts, no blank-page panic. EmploStart reads only what you wrote, shows what it understood, and suggests two tools and two prompts.</p>
+        <button type="button" class="btn btn--teal path-open" data-open="path-story" aria-expanded="false" aria-controls="path-story">Open the story studio</button>
+        <div class="path-body" id="path-story" hidden>
+          <div class="story-studio">
+            <div class="story-guide" aria-hidden="true">
+              <span class="story-chip">1 · Who you are</span>
+              <span class="story-chip">2 · Where you are now</span>
+              <span class="story-chip">3 · What you want next</span>
+            </div>
+            <label class="story-label" for="story-who">1. Who you are, in your own words</label>
+            <textarea id="story-who" rows="2" maxlength="2000" placeholder="I am a design graduate who has been running social accounts for a small shop."></textarea>
+            <label class="story-label" for="story-where">2. Where you are right now, honestly</label>
+            <textarea id="story-where" rows="3" maxlength="2000" placeholder="Underpaid, tired, and I have no portfolio I am proud of."></textarea>
+            <label class="story-label" for="story-what">3. What you want to achieve</label>
+            <textarea id="story-what" rows="3" maxlength="2000" placeholder="A junior UX role with a fair salary, or a paid internship I can grow from."></textarea>
+            <div class="story-meta">
+              <span class="story-meter" id="story-meter" aria-live="polite">0 / 300 words</span>
+              <button type="button" class="btn btn--ghost btn--sm" id="story-example">Load example story</button>
+            </div>
+            <div class="actions">
+              <button type="button" class="btn btn--teal" id="story-extract">Read my story</button>
+              <button type="button" class="btn btn--ghost" id="story-save">Save to vault</button>
+            </div>
+            <p class="panel-hint">Around 300 words is plenty. Going over never deletes anything; it only tells you the story is getting long.</p>
+            <div class="story-summary" id="story-summary" hidden></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card vault" aria-labelledby="vault-heading">
+      <div class="vault-head">
+        <h3 id="vault-heading">Your local vault</h3>
+        <p class="vault-completeness" id="vault-completeness">0% complete</p>
+      </div>
+      <div id="vault-bands" class="vault-bands"></div>
+      <div class="vault-controls">
+        <label>Storage<select id="vault-mode"><option value="persistent">This browser (persists)</option><option value="session">Shared or lab PC (wipes on close)</option></select></label>
+        <div class="actions">
+          <button type="button" class="btn btn--ghost btn--sm" id="vault-sample">Load sample</button>
+          <button type="button" class="btn btn--ghost btn--sm" id="vault-export">Export JSON</button>
+          <label class="btn btn--ghost btn--sm file-btn">Import JSON<input type="file" id="vault-import" accept="application/json,.json" hidden></label>
+          <button type="button" class="btn btn--ghost btn--sm" id="vault-wipe">Wipe local data</button>
+        </div>
+      </div>
+      <p class="panel-hint" id="vault-note" aria-live="polite">Nothing leaves this browser unless you turn on AI mode for one request.</p>
+    </div>
+  </section>
+
+  <section class="view" id="view-tools" data-view="tools" hidden>
+    <div class="view-head">
+      <p class="kicker">Step 3</p>
+      <h2>Your action hub</h2>
+      <p class="lede">One clear next step first. The six tools and the 14-prompt library sit behind it, not in front of you.</p>
+    </div>
+
+    <div class="dashboard">
+      <div class="card dashboard-card">
+        <h3>Your readiness snapshot</h3>
+        <p class="panel-hint">Four honest bands, never a score out of 100.</p>
+        <div id="dash-bands" class="vault-bands"></div>
+        <button type="button" class="btn btn--ghost btn--sm" data-nav="profile">Improve my snapshot</button>
+      </div>
+      <div class="card dashboard-card" id="dash-next-card">
+        <h3>Today's next step</h3>
+        <p id="dash-next-text">Choose a persona and one path in, and this becomes a single concrete action.</p>
+        <button type="button" class="btn btn--teal btn--sm" id="dash-next-button" data-nav="start">Start with one tap</button>
+      </div>
+      <div class="card dashboard-card">
+        <h3>Quick access</h3>
+        <div class="quick-links">
+          <button type="button" class="chip" data-nav="tool:pivot">Pivot Planner</button>
+          <button type="button" class="chip" data-nav="tool:reimagine">Reimagination Lab</button>
+          <button type="button" class="chip" data-nav="tool:market">Market &amp; Fair Wage</button>
+          <button type="button" class="chip" data-nav="tool:ats">ATS Analyzer</button>
+          <button type="button" class="chip" data-nav="tool:interview">Interview Prep</button>
+          <button type="button" class="chip" data-nav="tool:profile">Profile Builder</button>
+          <button type="button" class="chip" data-nav="library">14 prompts</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="context-bar" id="context-bar" aria-label="Target context">
+      <label for="engine-context">Target context</label>
+      <select id="engine-context"></select>
+      <label class="sync-toggle"><input type="checkbox" id="engine-sync"> Sync edits back to Vault</label>
+      <span class="panel-hint" id="engine-bridge-note" aria-live="polite">Forms fill from your vault. Sync is off by default.</span>
+    </section>
+
+    <nav class="module-nav" aria-label="Career modules">
+      <button type="button" class="module-tab is-active" id="tab-pivot" data-panel="pivot" aria-selected="true">01 · Pivot Planner</button>
+      <button type="button" class="module-tab" id="tab-reimagine" data-panel="reimagine" aria-selected="false">02 · Reimagine Lab</button>
+      <button type="button" class="module-tab" id="tab-market" data-panel="market" aria-selected="false">03 · Market &amp; Fair Wage</button>
+      <button type="button" class="module-tab" id="tab-ats" data-panel="ats" aria-selected="false">04 · ATS Analyzer</button>
+      <button type="button" class="module-tab" id="tab-interview" data-panel="interview" aria-selected="false">05 · Interview Prep</button>
+      <button type="button" class="module-tab" id="tab-profile" data-panel="profile" aria-selected="false">06 · Profile Builder</button>
+    </nav>
+
+    <section class="panel" id="panel-pivot" role="tabpanel" aria-labelledby="tab-pivot">
+      <h2>Career Pivot Planner</h2>
+      <p class="panel-note">Turn where you are into a staged plan you can check yourself. No salaries, no promises.</p>
+      <form class="grid" data-module="pivot">
+        <label>Current role or field<input name="current" placeholder="Operations lead" autocomplete="off"></label>
+        <label>Target direction<input name="target" placeholder="Product management" autocomplete="off"></label>
+        <label class="wide">Transferable skills<textarea name="skills" rows="2" placeholder="budgeting, coaching, process design, vendor management"></textarea></label>
+        <label class="wide">Strengths<textarea name="strengths" rows="2" placeholder="calm under pressure, clear writing, turning messy requests into plans"></textarea></label>
+        <label>Hours per week<input name="hoursPerWeek" type="number" min="1" max="40" value="6"></label>
+        <label>Runway<select name="runway"><option value="explore">Exploring</option><option value="transition" selected>Transitioning</option><option value="urgent">Urgent</option></select></label>
+        <label>Risk appetite<select name="risk"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label>
+        <label>Network<select name="network"><option value="none">None yet</option><option value="some" selected>Some contacts</option><option value="strong">Strong</option></select></label>
+        <div class="actions wide"><button type="submit" class="btn btn--teal">Build my plan</button></div>
+      </form>
+      <div class="result" id="result-pivot" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" id="panel-reimagine" role="tabpanel" aria-labelledby="tab-reimagine" hidden>
+      <h2>Career Reimagination Lab</h2>
+      <p class="panel-note">Map your strengths and interests onto directions worth testing. These are prompts, not promises.</p>
+      <form class="grid" data-module="reimagine">
+        <label>Current role<input name="current" placeholder="Teacher" autocomplete="off"></label>
+        <label>Work style<select name="workStyle"><option value="">Not sure</option><option value="builder">Builder</option><option value="analyst">Analyst</option><option value="people">People</option><option value="operator">Operator</option><option value="communicator">Communicator</option><option value="advisor">Advisor</option></select></label>
+        <label class="wide">Strengths<textarea name="strengths" rows="2" placeholder="explaining hard ideas, planning, patience"></textarea></label>
+        <label class="wide">Interests<textarea name="interests" rows="2" placeholder="education, community, writing"></textarea></label>
+        <label class="wide">Constraints<textarea name="constraints" rows="2" placeholder="cannot relocate, evenings only"></textarea></label>
+        <div class="actions wide"><button type="submit" class="btn btn--teal">Show my matches</button></div>
+      </form>
+      <div class="result" id="result-reimagine" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" id="panel-market" role="tabpanel" aria-labelledby="tab-market" hidden>
+      <h2>Market Assessment &amp; Fair-Wage Readiness</h2>
+      <p class="panel-note">Score how ready you are to check a market and a fair wage. We never invent pay figures; we give you the research plan.</p>
+      <form class="grid" data-module="market">
+        <label>Target role<input name="role" placeholder="Data analyst" autocomplete="off"></label>
+        <label>Region or city<input name="region" placeholder="Lahore" autocomplete="off"></label>
+        <label>Experience<input name="years" placeholder="3 years" autocomplete="off"></label>
+        <label>Employers publish ranges?<select name="transparency"><option value="yes">Usually yes</option><option value="partial" selected>Sometimes</option><option value="no">Usually no</option></select></label>
+        <div class="actions wide"><button type="submit" class="btn btn--teal">Assess readiness</button></div>
+      </form>
+      <div class="result" id="result-market" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" id="panel-ats" role="tabpanel" aria-labelledby="tab-ats" hidden>
+      <h2>ATS Resume Analyzer</h2>
+      <p class="panel-note">Score a resume against one job description, then fix the gaps. Deterministic and private.</p>
+      <form class="grid" data-module="ats">
+        <label class="wide">Resume text<textarea name="resume" rows="7" placeholder="Paste the resume as plain text"></textarea></label>
+        <label class="wide">Job description<textarea name="jd" rows="5" placeholder="Paste the job description"></textarea></label>
+        <div class="actions wide"><button type="submit" class="btn btn--teal">Score my resume</button></div>
+      </form>
+      <div class="result" id="result-ats" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" id="panel-interview" role="tabpanel" aria-labelledby="tab-interview" hidden>
+      <h2>Interview Prep</h2>
+      <p class="panel-note">Get practice questions for a role, then score an answer against a clear rubric.</p>
+      <form class="grid" data-module="interview">
+        <label>Role<input name="role" placeholder="Product manager" autocomplete="off"></label>
+        <label>Level<select name="level"><option>Internship</option><option>Entry level</option><option selected>1 to 3 years</option><option>Career switch</option></select></label>
+        <div class="actions wide"><button type="submit" class="btn btn--teal">Get questions</button></div>
+      </form>
+      <div class="result" id="result-interview" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" id="panel-profile" role="tabpanel" aria-labelledby="tab-profile" hidden>
+      <h2>Profile Builder</h2>
+      <p class="panel-note">Rewrite a headline, summary and bullets, then browse 14 copy-paste prompts.</p>
+      <form class="grid" data-module="profile">
+        <label class="wide">Headline<input name="headline" placeholder="Operations lead moving into product management" autocomplete="off"></label>
+        <label class="wide">Summary<textarea name="summary" rows="3" placeholder="I am a hardworking operations lead passionate about product."></textarea></label>
+        <label class="wide">Bullets (one per line)<textarea name="bullets" rows="4" placeholder="Ran the weekly supply plan&#10;Trained 6 new hires&#10;Cut report time from 2 days to 4 hours"></textarea></label>
+        <label>Target role<input name="targetRole" placeholder="Product manager" autocomplete="off"></label>
+        <div class="actions wide"><button type="submit" class="btn btn--teal">Rewrite my profile</button></div>
+      </form>
+      <div class="result" id="result-profile" aria-live="polite"></div>
+      <div class="prompts">
+        <div class="prompts-head">
+          <h3>14 ready prompts</h3>
+          <input type="search" id="prompt-search" placeholder="Search prompts by task or keyword" aria-label="Search prompts">
+        </div>
+        <ul class="prompt-list" id="prompt-list"></ul>
+      </div>
+    </section>
+
+    <section class="library" id="library">
+      <p class="kicker">EMPLOWISE × START</p>
       <h2>Fourteen letters. Fourteen prompts.</h2>
       <p class="lede">One prompt per letter, in journey order: get shortlisted, get the interview, win it, land a fair offer, then pivot. The compiler fills what it can from your vault and asks about the rest.</p>
       <div id="library-tracks" class="library-tracks"></div>
@@ -227,7 +343,7 @@
         <pre class="workbench-output" id="wb-output" tabindex="0"></pre>
         <p class="panel-hint" id="wb-note" aria-live="polite"></p>
       </div>
-    </div>
+    </section>
   </section>
 </main>
 
@@ -244,6 +360,25 @@
   <p>EmploStart by Emplowise. Free, local-first, and honest about what it cannot know.</p>
   <p class="foot-links"><a href="https://diocese-trees.github.io/Emplowise-Website-Phase-I/">Emplowise</a> · <a href="https://diocese-trees.github.io/Emplowise-Website-Phase-I/docs/">Documentation</a></p>
 </footer>
+
+<aside class="coach" id="coach" aria-hidden="true" aria-labelledby="coach-title">
+  <div class="coach-panel" role="dialog" aria-modal="false">
+    <div class="coach-head">
+      <div>
+        <h2 id="coach-title">Local coach</h2>
+        <span class="coach-badge">Local Coach · AI upgrade planned</span>
+      </div>
+      <button type="button" class="coach-close" id="coach-close" aria-label="Close the coach">×</button>
+    </div>
+    <div class="coach-log" id="coach-log" aria-live="polite"></div>
+    <div class="coach-suggestions" id="coach-suggestions"></div>
+    <form class="coach-form" id="coach-form">
+      <label class="sr-only" for="coach-input">Ask the coach</label>
+      <input id="coach-input" type="text" autocomplete="off" placeholder="Ask in plain words: AI, CV, LinkedIn, pay, interviews">
+      <button type="submit" class="btn btn--teal btn--sm">Send</button>
+    </form>
+  </div>
+</aside>
 
 <dialog id="consent-dialog" aria-labelledby="consent-title">
   <h2 id="consent-title">Turn on AI suggestions?</h2>
@@ -266,9 +401,14 @@
 <script src="js/intake-engine.js" defer></script>
 <script src="js/prompt-compiler.js" defer></script>
 <script src="js/ai.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/personas.js" defer></script>
+<script src="js/story-parser.js" defer></script>
 <script src="js/app.js" defer></script>
 <script src="js/engine-bridge.js" defer></script>
 <script src="js/intake-ui.js" defer></script>
 <script src="js/prompt-library.js" defer></script>
+<script src="js/guided-chat.js" defer></script>
+<script src="js/guided-app.js" defer></script>
 </body>
 </html>

@@ -30,7 +30,12 @@ export function makeWindow() {
   const win = {};
   const sandbox = {
     window: win,
-    document: { querySelector: () => null, createElement: () => ({ style: {}, appendChild() {} }) },
+    document: {
+      querySelector: () => null,
+      getElementById: () => null,
+      addEventListener: () => {},
+      createElement: () => ({ style: {}, appendChild() {}, addEventListener: () => {} })
+    },
     localStorage,
     sessionStorage,
     TextEncoder,
@@ -50,9 +55,15 @@ export function makeWindow() {
 export function loadInto(win, rel) {
   const sandbox = vm.createContext({
     window: win,
-    document: { querySelector: () => null, createElement: () => ({ style: {}, appendChild() {} }) },
+    document: {
+      querySelector: () => null,
+      getElementById: () => null,
+      addEventListener: () => {},
+      createElement: () => ({ style: {}, appendChild() {}, addEventListener: () => {} })
+    },
     localStorage: win.localStorage,
     sessionStorage: win.sessionStorage,
+    fetch: () => Promise.reject(new Error('offline')),
     TextEncoder,
     TextDecoder,
     Blob,

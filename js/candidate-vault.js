@@ -21,8 +21,9 @@
     var KEY = 'emplostart_vault_v2';
     var MODE_KEY = 'emplostart_vault_mode_v1';
     var MAX_IMPORT = 200 * 1024;
-    var RANK = { manual: 4, cv_parse: 3, linkedin_parse: 2, test: 1 };
+    var RANK = { manual: 4, story_parse: 3, cv_parse: 3, linkedin_parse: 2, test: 1 };
     var BANDS = ['Foundation', 'Developing', 'Competitive', 'Evidence-Backed'];
+    var PERSONAS = ['stuck_employee', 'student', 'founder', 'women_career', 'beginner_ai_brand'];
     var BAND_KEYS = [
         'evidence', 'positioning', 'market_clarity',
         'ats_readiness', 'interview_readiness', 'negotiation', 'pivot_readiness'
@@ -46,6 +47,31 @@
         return profile;
     }
 
+    function blankStory() {
+        return {
+            raw_text: '',
+            who_am_i: '',
+            where_am_i: '',
+            what_i_want: '',
+            word_count: 0,
+            extracted_signals: []
+        };
+    }
+
+    /* Story text is user prose. Strip angle brackets before it is stored so a
+       future renderer can never treat it as markup, then cap the length. */
+    function storyText(value, cap) {
+        return String(value == null ? '' : value)
+            .replace(/[<>]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .slice(0, cap);
+    }
+
+    function blankChallenge() {
+        return { started_at: null, completed_days: [], notes_by_day: {} };
+    }
+
     function emptyVault() {
         return {
             version: 2,
@@ -54,6 +80,9 @@
             active_context_id: null,
             field_sources: {},
             readiness_bands: {},
+            persona: '',
+            story_300: blankStory(),
+            challenge_progress: blankChallenge(),
             updated_at: null
         };
     }
@@ -193,6 +222,48 @@
                 }
             });
         }
+        if (PERSONAS.indexOf(input.persona) !== -1) {
+            base.persona = input.persona;
+        }
+        if (input.story_300 && typeof input.story_300 === 'object') {
+            var story = input.story_300;
+            base.story_300 = {
+                raw_text: storyText(story.raw_text, 4000),
+                who_am_i: storyText(story.who_am_i, 2000),
+                where_am_i: storyText(story.where_am_i, 2000),
+                what_i_want: storyText(story.what_i_want, 2000),
+                word_count: Math.max(0, Math.min(2000, Number(story.word_count) || 0)),
+                extracted_signals: Array.isArray(story.extracted_signals)
+                    ? story.extracted_signals.slice(0, 12).map(function (item) { return String(item).slice(0, 80); })
+                    : []
+            };
+        }
+        if (input.challenge_progress && typeof input.challenge_progress === 'object') {
+            var progress = input.challenge_progress;
+            var seen = {};
+            base.challenge_progress = blankChallenge();
+            base.challenge_progress.started_at = progress.started_at
+                ? String(progress.started_at).slice(0, 40) : null;
+            if (Array.isArray(progress.completed_days)) {
+                progress.completed_days.forEach(function (day) {
+                    var number = Math.round(Number(day));
+                    if (number >= 1 && number <= 30 && !seen[number]) {
+                        seen[number] = true;
+                        base.challenge_progress.completed_days.push(number);
+                    }
+                });
+                base.challenge_progress.completed_days.sort(function (a, b) { return a - b; });
+            }
+            if (progress.notes_by_day && typeof progress.notes_by_day === 'object') {
+                Object.keys(progress.notes_by_day).forEach(function (key) {
+                    var number = Math.round(Number(key));
+                    if (number >= 1 && number <= 30 && !isReserved(key)) {
+                        var note = String(progress.notes_by_day[key] || '').slice(0, 280);
+                        if (note.trim()) { base.challenge_progress.notes_by_day[String(number)] = note; }
+                    }
+                });
+            }
+        }
         return base;
     }
 
@@ -269,6 +340,39 @@
         var cap = key === 'target_jd' ? 12000 : 200;
         ctx[key] = String(value == null ? '' : value).slice(0, cap);
         if (key === 'target_role' && ctx[key]) { ctx.label = ctx[key].slice(0, 60); }
+        return vault;
+    }
+
+    function setPersona(db, key) {
+        var vault = db || read();
+        vault.persona = PERSONAS.indexOf(key) === -1 ? '' : key;
+        return vault;
+    }
+
+    function setStory(db, story) {
+        var vault = db || read();
+        vault.story_300 = sanitizeVaultLike({ story_300: story || {} }).story_300;
+        return vault;
+    }
+
+    function setChallengeDay(db, day, done, note) {
+        var vault = db || read();
+        var number = Math.round(Number(day));
+        if (!(number >= 1 && number <= 30)) { return vault; }
+        if (!vault.challenge_progress) { vault.challenge_progress = blankChallenge(); }
+        var list = vault.challenge_progress.completed_days || [];
+        var index = list.indexOf(number);
+        if (done && index === -1) { list.push(number); }
+        if (!done && index !== -1) { list.splice(index, 1); }
+        vault.challenge_progress.completed_days = list.sort(function (a, b) { return a - b; });
+        if (!vault.challenge_progress.started_at && vault.challenge_progress.completed_days.length) {
+            vault.challenge_progress.started_at = new Date().toISOString();
+        }
+        if (note != null) {
+            var text = String(note).slice(0, 280);
+            if (text.trim()) { vault.challenge_progress.notes_by_day[String(number)] = text; }
+            else { delete vault.challenge_progress.notes_by_day[String(number)]; }
+        }
         return vault;
     }
 
@@ -391,6 +495,7 @@
         KEY: KEY,
         CORE_KEYS: CORE_KEYS,
         BANDS: BANDS,
+        PERSONAS: PERSONAS,
         BAND_KEYS: BAND_KEYS,
         empty: emptyVault,
         read: read,
@@ -402,6 +507,9 @@
         getField: getField,
         setField: setField,
         setTarget: setTarget,
+        setPersona: setPersona,
+        setStory: setStory,
+        setChallengeDay: setChallengeDay,
         merge: merge,
         completeness: completeness,
         computeBands: computeBands,
